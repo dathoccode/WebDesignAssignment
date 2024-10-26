@@ -70,6 +70,7 @@ header li{
     color: #fff;
     margin: auto 0;
     font-size: 16px;
+    cursor: pointer;
 }
 .nav-container li a{
     text-decoration: none;
@@ -104,10 +105,10 @@ header li{
     margin: 0 5px;
 }
 .hot-sale-content{
-    height: 280px;
+    height: 330px;
     position: relative;
 }
-.hot-sale-content i{
+.hot-sale-btn i{
     position: absolute;
     height: 50px;
     width: 30px;
@@ -119,7 +120,7 @@ header li{
     opacity: 0;
     border-radius: 6px;
 }
-.hot-sale-content:hover i{
+.hot-sale-content:hover .hot-sale-btn i{
     opacity: 1;
     transition: all 0.3s ease;
 }
@@ -151,6 +152,19 @@ header li{
     padding: 0 10px;
     position: relative;
 }
+
+.product-infor li:nth-of-type(2){
+    text-align: left;
+    margin: 5px 0;
+}
+.product-infor li:last-child{
+    font-size: 14px;
+    text-align: left;
+}
+.product-infor li:last-child i{
+    height: 100%;
+    color: #FFD700;
+}
 .product-infor img
 {
     max-width: 100%;
@@ -164,7 +178,6 @@ header li{
 
 .hot-sale-container{
     list-style-type: none;
-
 }
 .product-container{
     width: calc(20% - 24px);
@@ -181,12 +194,15 @@ header li{
     display: inline;
     float: left;
 }
-.product-infor li:nth-child(1){    /*product name*/
+.product-infor li:nth-of-type(1){    /*product name*/
     margin: 15px auto;
+    text-align: center;
 }
-.product-old-price{
+.hot-sale-product-old-price{
     text-decoration: line-through;
     margin-left: 10px;
+    font-size: 12px;
+    color: #333;
 }
 .hot-sale-tag{
     background: url(./image/icons/sale-tag.png);
@@ -197,6 +213,11 @@ header li{
     position: absolute;
     left: -5px;
     top: -3px;
+}
+.hot-sale-product-new-price
+{
+    color: red;
+    font-weight: bold;
 }
 
 
@@ -214,6 +235,11 @@ footer {
     justify-content: space-around;
     text-align: left;
 }
+.footer-section
+{
+    width: 20%;
+    margin: 5px auto;
+}
 .collumns{
     display: flex; /* Sử dụng Flexbox */
     flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
@@ -223,4 +249,75 @@ footer {
     flex: 1 0 50%; /* Mỗi phần tử chiếm 50% chiều rộng */
     margin: 8px 0 0; /* Thêm khoảng cách giữa các phần tử */
     padding-left: 10px;
+}
+/*  list item */
+/* General Container for Featured Section */
+.featured-container {
+    max-width: 1200px; /* Ensures alignment with the "Hot Sale" section */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.featured-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Sets 5 items per row */
+    gap: 20px; /* Space between items */
+}
+
+/* Individual Product Card Styling */
+.product-card {
+    padding: 10px;
+    border: 3px solid #ddd;
+    border-radius: 16px;
+    background-color: white;
+    text-align: center;
+}
+
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Discount Tag */
+.discount-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff5050;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Product Image */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Product Name, Price, and Rating */
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #ff5050;
+    margin-bottom: 6px;
+}
+
+.product-rating {
+    font-size: 14px;
+    color: #ffcc00;
 }
