@@ -11,7 +11,7 @@ body{
 }
 
 
-/*styles for header*/
+/*--------------------------------Header----------------------------------------*/
 header li{
     display: inline-block;
     font-size: 24px;
@@ -88,7 +88,7 @@ header li{
 }
 
 
-/*----------------------------styles for hot sale--------------------------*/
+/*---------------------------hot sale--------------------------*/
 .hot-sale-container{
     width: 80%;
     margin: 10px auto;
@@ -103,8 +103,64 @@ header li{
 .fa-fire-flame-curved{
     margin: 0 5px;
 }
+.hot-sale-content{
+    height: 280px;
+    position: relative;
+}
+.hot-sale-content i{
+    position: absolute;
+    height: 50px;
+    width: 30px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 26px;
+    background-color: #d7d7d78e;
+    top: 40%;
+    opacity: 0;
+    border-radius: 6px;
+}
+.hot-sale-content:hover i{
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.fa-chevron-left{
+    left: -2px;
+}
+.fa-chevron-right{
+    right: -2px;
+}
+.hot-sale-items{
+    width: 98%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.hot-sale-product-container
+{
+    width: calc(20% - 30px);
+    margin: 15px;
+    border: 3px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    position: absolute;
+    transition: all 0.3s ease-in;
+}
+.product-infor{
+    width: 100%;
+    padding: 0 10px;
+    position: relative;
+}
+.product-infor img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
 
-/*----------------------------styles for product--------------------------*/
+
+
+
+/*----------------------------hot sale product--------------------------*/
 
 .hot-sale-container{
     list-style-type: none;
@@ -125,18 +181,28 @@ header li{
     display: inline;
     float: left;
 }
-.hot-sale-product-infor li:nth-child(1){    /*product name*/
+.product-infor li:nth-child(1){    /*product name*/
     margin: 15px auto;
 }
-.hot-sale-product-old-price{
+.product-old-price{
     text-decoration: line-through;
     margin-left: 10px;
 }
+.hot-sale-tag{
+    background: url(./image/icons/sale-tag.png);
+    background-size: contain;
+    width: 60px;
+    height: 30px;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -5px;
+    top: -3px;
+}
 
 
 
 
-/*styles for footer*/
+/*--------------------------------Footer----------------------------------------*/
 footer {
     position: relative;
     bottom: 0;
