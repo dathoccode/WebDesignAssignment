@@ -1,58 +1,52 @@
-/* Reset mặc định */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
+body{
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
 }
-
-.login-container {
+.register-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.logo {
+.logo{
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
     width: 100%;
 }
-
-.login-container img {
+.register-container img{
     max-width: 160px;
 }
-
-.login-container h1 {
+.register-container h1 {
     font-size: 30px;
     margin-bottom: 15px;
     text-align: center;
 }
 
-.login-container p {
+.register-container p {
     font-size: 15px;
     color: #666;
     margin-bottom: 20px;
     text-align: center;
 }
-
-.login-container label {
+.register-container label {
     display: block;
     font-size: 17px;
     text-align: left;
     margin-bottom: 5px;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -60,28 +54,21 @@ body {
     border-radius: 4px;
     font-size: 15px;
 }
-
-.login-container a {
+.register-container a {
     color: #007bff;
     text-decoration: none;
 }
 
-.login-container a:hover {
+.register-container a:hover {
     text-decoration: underline;
 }
-
-.remember-me {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+.terms {
+    font-size: 15px;
+    color: #666;
+    text-align: right;
+    margin: 15px 0;
 }
-
-.remember-me input[type="checkbox"] {
-    margin-right: 8px;
-    margin-bottom: 5px;
-}
-
-.btn-login {
+.btn-register {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -94,22 +81,19 @@ body {
     margin-bottom: 15px;
 }
 
-.btn-login:hover {
+.btn-register:hover {
     background-color: #0056b3;
 }
-
-.register-link {
+.login-link {
     border-top: 1px solid gray;
     font-size: 15px;
     color: #666;
     padding-top: 20px;
     margin-top: 15px;
-    text-align: center;
 }
-
 .footer {
     background-color: #f9f9f9;
-    padding-top: 14px;
+    padding: 14px;
     text-align: center;
     font-size: 15px;
     color: #666;
@@ -129,7 +113,7 @@ body {
 }
 
 .footer-links {
-    margin: 10px 0;
+    margin-bottom: 5px;
 }
 
 .footer p {
