@@ -96,8 +96,9 @@ header li{
 .hot-sale-container{
     width: 80%;
     margin: 10px auto;
-    background-color: #74c3bf;
     border-radius: 8px;
+    background-image: linear-gradient(to top,#225451, #ffffff);
+    border: solid 3px #ddd;
 }
 .hot-sale-container h1{
     text-align: center;
@@ -154,6 +155,9 @@ header li{
     width: 100%;
     padding: 0 10px;
     position: relative;
+}
+.product-infor li:nth-child(1){
+    line-height: 30px;
 }
 
 .product-infor li:nth-of-type(2){
