@@ -9,11 +9,27 @@
     ></script>
     <link rel="stylesheet" href="style.css" />
     <link
-      rel="shortcut icon"
-      href="./image/icons/logo.png"
-      type="image/x-icon"
-    />
+      rel="shortcut icon" href="./image/icons/logo.png" type="image/x-icon"/>
     <title>Product</title>
+    <script>
+      //set product infor
+      window.onload = function(){
+        //------------------------------PRODUCT TO CART--------------------------
+        const buyNowBtn = document.querySelector('.buy-now')
+        const productData = JSON.parse(sessionStorage.getItem('productData'));
+        document.querySelector('.product-title').textContent = productData.name
+        document.querySelector('[alt="Tên sản phẩm"]').src = productData.imgSrc
+        //split for product code
+        const str = productData.imgSrc.split("/")
+        const productCode = str[4]
+        for (let i = 1; i <= 10; i++) {
+          document.querySelector(`[alt="Thumbnail ${i}"]`).src = `./image/${productCode}/${productCode}${i}.png`          
+        }
+      }
+
+
+
+    </script>
   </head>
   <body>
     <header>
@@ -124,7 +140,7 @@
     
 
 
-  <script src="productScript.js"></script>
+  <script src="script.js"></script>
   
   </body>
 </html>

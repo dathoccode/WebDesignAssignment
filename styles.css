@@ -9,6 +9,9 @@
 body{
     min-height: 100%;
 }
+a{
+    text-decoration: none;
+}
 
 
 /*--------------------------------Header----------------------------------------*/
@@ -249,4 +252,71 @@ footer {
     flex: 1 0 50%; /* Mỗi phần tử chiếm 50% chiều rộng */
     margin: 8px 0 0; /* Thêm khoảng cách giữa các phần tử */
     padding-left: 10px;
+}
+/*  list item */
+/* General Container for Featured Section */
+.featured-container {
+    max-width: 1200px; /* Ensures alignment with the "Hot Sale" section */
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.featured-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Sets 5 items per row */
+    gap: 20px; /* Space between items */
+}
+
+/* Individual Product Card Styling */
+.product-card {
+    padding: 10px;
+    border: 3px solid #ddd;
+    border-radius: 16px;
+    background-color: white;
+    text-align: center;
+}
+
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Product Image */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Product Name, Price, and Rating */
+.product-name {
+    font-size: 19px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #ff5050;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.product-rating{
+    list-style: none;
+    color: yellow;
+    font-size:smaller;
+}
+
+.product-rating span{
+    color: #333;
 }
