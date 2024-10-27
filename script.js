@@ -1,71 +1,53 @@
 //--------------------------------------SLIDER----------------------------
-const btnLeft = document.querySelector('.fa-chevron-left')
-const btnRight = document.querySelector('.fa-chevron-right')
-const hotSaleItems = document.querySelector('.hot-sale-items')
-const containerWidth = parseFloat(window.getComputedStyle(hotSaleItems).width)
-const hotSaleProduct = document.querySelectorAll('.hot-sale-product-container')
+const btnLeft = document.querySelector('.fa-chevron-left');
+const btnRight = document.querySelector('.fa-chevron-right');
+const hotSaleContainer = document.querySelector('.hot-sale-items');
+const hotSaleProducts = document.querySelectorAll('.hot-sale-product-container');
 
-let index = 0
-hotSaleProduct.forEach(items =>{
-    items.style.left = 20 * index + "%" 
-    index++
-})
-index = 0
-btnLeft.addEventListener("click", function(){
-    if(index <= 0) 
-    {
-        btnLeft.style.display = "none"
-        return
-    }
+let index = 0;
+const PRODUCTS_VISIBLE = 5;
+const SLIDE_PERCENTAGE = 20; // Each product takes 20% of the container
 
-    hotSaleProduct.forEach(items => {
-        const curLeft = parseFloat(window.getComputedStyle(items).left)
-        const newLeft = curLeft + 0.2 *  containerWidth 
-        items.style.left = newLeft + "px"
-    })
-    index--
-})
-btnRight.addEventListener("click", function(){
-    if(index > hotSaleProduct.length - 6)
-    {
-        btnRight.style.display = "none"
-        return
-    }
-    hotSaleProduct.forEach(items => {
-        const curLeft = parseFloat(window.getComputedStyle(items).left)
-        const newLeft = curLeft - 0.2 *  containerWidth
-        items.style.left = newLeft + "px"
-    })
-    index++
-})
-function hotSaleAuto()
-{
-    if(index > hotSaleProduct.length - 6 || index < 0)
-    {
-        index = 0
-        hotSaleProduct.forEach(items =>{
-            items.style.left = 20 * index + "%"
-            index++
-        })
-        index = 0
-    }
-    else
-    {
-        hotSaleProduct.forEach(items => {
-            const curLeft = parseFloat(window.getComputedStyle(items).left)
-            const newLeft = curLeft - 0.2 *  containerWidth + 0.1
-            items.style.left = newLeft + "px"
-        })
-        index++
-    }
-    btnLeft.style.display = "block"
-    btnRight.style.display = "block"
+// Initialize product positions
+hotSaleProducts.forEach((item, idx) => {
+    item.style.left = `${SLIDE_PERCENTAGE * idx}%`;
+});
+
+// Adjust button visibility based on index
+function updateButtonVisibility() {
+    btnLeft.style.display = index <= 0 ? "none" : "block";
+    btnRight.style.display = index >= hotSaleProducts.length - PRODUCTS_VISIBLE ? "none" : "block";
 }
 
-setInterval(hotSaleAuto, 5000)
+function smoothSlide(direction) {
+    index += direction;
 
-// ---------------------Reload-----------------------------------
-const brandLogo = document.querySelector(".brand-logo")
-brandLogo.addEventListener("click", function(){
-    location.reload()
-})
+    if (index < 0) index = 0;
+    else if (index > hotSaleProducts.length - PRODUCTS_VISIBLE) index = hotSaleProducts.length - PRODUCTS_VISIBLE;
+
+    hotSaleProducts.forEach((item, idx) => {
+        item.style.left = `${(idx - index) * SLIDE_PERCENTAGE}%`;
+    });
+
+    updateButtonVisibility();
+}
+
+btnLeft.addEventListener("click", () => smoothSlide(-1));
+btnRight.addEventListener("click", () => smoothSlide(1));
+
+// Auto-slide function
+function hotSaleAuto() {
+    if (index < hotSaleProducts.length - PRODUCTS_VISIBLE) {
+        smoothSlide(1);
+    } else {
+        index = 0; // Reset to first set of products
+        updateProductPositions();
+    }
+}
+
+setInterval(hotSaleAuto, 5000);
+
+// Initialize button visibility
+updateButtonVisibility();
+
+
