@@ -1,0 +1,131 @@
+/*general styles*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+}
+body{
+    min-height: 100%;
+}
+
+
+/*--------------------------------Header----------------------------------------*/
+header li{
+    display: inline-block;
+    font-size: 24px;
+}
+.headerBanner{
+    height: 50px;
+    text-align: center;
+}
+.headerBanner li
+{
+    height: 50px;
+    text-align: center;
+    width: calc(27% - 60px);
+    padding: 0 30px;
+    line-height: 50px;
+}
+.headerBanner img{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+}
+
+.nav-container ul{
+    background-color: #225451;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+    padding: 0 5%;
+}
+.nav-container img{
+    height: 60px;
+}
+.nav-container li{
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+    height: 100%;
+}
+.nav-container i
+{
+    position: relative;
+    top: 1px;
+    right: 2px;
+    margin-right: 3px;
+}
+.nav-container ul li button:hover{
+    background-color: rgb(149, 149, 149);
+}
+.nav-container ul li button{
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: black;
+    color: #fff;
+    margin: auto 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.nav-container li a{
+    text-decoration: none;
+    color: #fff;
+}
+.nav-container input{
+    border-radius: 8px;
+    padding: 0 30px;
+    height: 30px;
+    outline: none;
+   
+}
+.fa-magnifying-glass{
+    position:absolute;
+    left: 25px;
+}
+
+
+/*---------------------------hot sale--------------------------*/
+.hotsale
+{
+    
+}
+.hotsale-banner{
+    text-align: center;
+}
+
+
+.hotsale-product-items
+
+
+/*--------------------------------Footer----------------------------------------*/
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color:#225451;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+}
+.footer-section
+{
+    width: 20%;
+    margin: 5px auto;
+}
+.collumns{
+    display: flex; /* Sử dụng Flexbox */
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
+}
+.footer-section ul li {
+    list-style: none;
+    flex: 1 0 50%; /* Mỗi phần tử chiếm 50% chiều rộng */
+    margin: 8px 0 0; /* Thêm khoảng cách giữa các phần tử */
+    padding-left: 10px;
+}

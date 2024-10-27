@@ -69,4 +69,3 @@ const brandLogo = document.querySelector(".brand-logo")
 brandLogo.addEventListener("click", function(){
     location.reload()
 })
-
