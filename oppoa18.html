@@ -20,6 +20,9 @@
             colorPrice[i].textContent = tmp
           }
         }
+        function showImage(item){
+          document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
+        }
         
 
     </script>
@@ -30,7 +33,7 @@
       <div class="headerBanner">
         <li>Giao hàng nhanh</li>
         <li>
-          <img src="./image/medal.png" alt="medal_icon" />Sản phẩm chính hãng
+          <img src="./image/icons/medal.png" alt="medal_icon" />Sản phẩm chính hãng
         </li>
         <li>Bảo hành lâu dài</li>
       </div>
@@ -38,7 +41,7 @@
     <div class="nav-container">
       <nav>
         <ul>
-          <li><a href="index.html"><img src="./image/brand_logo.png" class="brand-logo" /></li></a>
+          <li><a href="index.html"><img src="./image/icons/brand_logo.png" class="brand-logo" /></li></a>
           <li>
             <button>
               <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
@@ -95,32 +98,27 @@
         <div class="product-container-right">
             <div class="version-container">
               <h3>Chọn phiên bản:</h3>
-                <input type="radio" name="version" id="version-4gb-128gb">
-                <label for="version-4gb-128gb" onclick="updatePrice(this)" class="custom-radio">
+                <input type="radio" name="version" id="version-1">
+                <label for="version-1" onclick="updatePrice(this)" class="custom-radio">
                   <i class="fa-solid fa-circle-check"></i>
                   <p id="version-name">4GB 128GB</p>
                   <p id="version-price">3.690.000</p>
                 </label>
             
-                <input type="radio" name="version" id="version-4gb-64gb-1">
-                <label for="version-4gb-64gb-1" onclick="updatePrice(this)" class="custom-radio">
+                <input type="radio" name="version" id="version-2">
+                <label for="version-2" onclick="updatePrice(this)" class="custom-radio">
                   <i class="fa-solid fa-circle-check"></i>
                   <p id="version-name">4GB 64GB</p>
                   <p id="version-price">2.990.000</p>
                 </label>
             
-                <input type="radio" name="version" id="version-4gb-64gb-2">
-                <label for="version-4gb-64gb-2" onclick="updatePrice(this)" class="custom-radio">
-                  <i class="fa-solid fa-circle-check"></i>
-                  <p id="version-name">4GB 64GB</p>
-                  <p id="version-price">2.990.000</p>
-                </label>
+                
             </div>
 
             <div class="color-container">
               <h3>Chọn màu sản phẩm:</h3>
-              <input type="radio" name="color" id="blue">
-              <label for="blue" class="custom-radio">
+              <input type="radio" name="color" id="color-1">
+              <label for="color-1" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
                 <img src="image/oppoa18/oppoa181.png" alt="">
                 <div class="color-text">
@@ -129,8 +127,8 @@
               </div>
               </label>
 
-              <input type="radio" name="color" id="black">
-              <label for="black" class="custom-radio">
+              <input type="radio" name="color" id="color-2">
+              <label for="color-2" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
                 <img src="image/oppoa18/oppoa18main.png" alt="">
                 <div class="color-text">
@@ -139,15 +137,7 @@
                 </div>
               </label>
 
-              <input type="radio" name="color" id="yellow">
-              <label for="yellow" class="custom-radio">
-                <i class="fa-solid fa-circle-check"></i>
-                <img src="image/oppoa18/oppoa181.png" alt="">
-                <div class="color-text">
-                  <p id="color-name">Vàng</p>
-                  <p id="color-price">2.990.000</p>
-                </div>                
-              </label>
+              
           </div>
 
           <div class="policy-section">
