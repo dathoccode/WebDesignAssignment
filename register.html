@@ -98,6 +98,18 @@
             padding-top: 20px;
             margin-top: 15px;
         }
+         /* Notification style */
+        #notification{
+            visibility: hidden;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
         .footer {
             background-color: #f9f9f9;
             padding: 14px;
@@ -137,7 +149,7 @@
 
     <main class="register-container">
         <div class="logo">
-            <img src="./image/brand_logo.png" alt="automobilelogo">
+            <img src="./image/icons/brand_logo.png" alt="automobilelogo">
         </div>
         <h1>Đăng ký tài khoản</h1>
         <p>Một tài khoản sử dụng cho tất cả các dịch vụ của Automobile</p>
@@ -166,6 +178,10 @@
         <p class="login-link">Bạn đã có tài khoản? <a href="./login.html">Đăng nhập</a></p>
     </main>
 
+
+    <!-- Notification div -->
+    <div id="notification">Đăng ký thành công! Đang chuyển hướng đến Đăng nhập</div>
+
     <footer class="footer">
         <div class="footer-links">
             <a href="#">Điều khoản sử dụng</a> |
@@ -176,7 +192,7 @@
     </footer>
 
     <script>
-        function registerUser(event) {
+        function tempna(event) {
             event.preventDefault();
 
             const email = document.getElementById('email').value;
@@ -193,9 +209,48 @@
             // Store user data in localStorage
             localStorage.setItem('registeredEmail', email);
             localStorage.setItem('registeredPassword', password);
+            localStorage.setItem('registeredPassword', );
+            
 
-            alert('Đăng ký thành công! Đang chuyển hướng đến trang chủ...');
+            
+        }
+
+        function registerUser (event) {
+            event.preventDefault();
+        
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+        
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                document.getElementById('password').value = "";
+                document.getElementById('confirmPassword').value = "";  
+                return;
+            }
+            // Lấy dữ liệu tài khoản đã lưu từ localStorage
+            let accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+        
+            // Kiểm tra xem email đã tồn tại chưa
+            const existingAccount = accounts.find(account => account.email === email);
+            if (existingAccount) {
+                alert('Email đã được sử dụng!');
+                return;
+            }
+        
+            // Thêm tài khoản mới vào mảng
+            accounts.push({ email: email, password: password });
+        
+            // Lưu lại mảng vào localStorage
+            localStorage.setItem('userAccounts', JSON.stringify(accounts));
+
+            const notification = document.getElementById('notification');
+            notification.style.visibility = 'visible';
+        
+            setTimeout(() => {
+            notification.style.visibility = 'hidden';
             window.location.href = './login.html'; // Redirect to login
+            }, 2000); // 1000ms =1s
         }
     </script>
 </body>

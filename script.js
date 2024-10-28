@@ -50,23 +50,7 @@ setInterval(hotSaleAuto, 5000);
 // Initialize button visibility
 updateButtonVisibility();
 
-//storage product infor When a product container clicked
-const showInforBtn = document.querySelectorAll('.product-infor, .product-card')
-showInforBtn.forEach(item => {
-    item.addEventListener("click", function(){
-        storageData(item)
-    })
+$(window).unload(function(){
+    localStorage.accounts = undefined
 })
-
-function storageData(item){
-    const productData = { name: item.querySelector('.product-name').textContent, 
-        price: item.querySelector('.product-price, .hot-sale-product-new-price').textContent,
-        imgSrc: item.querySelector("img").src};
-    sessionStorage.setItem('productData', JSON.stringify(productData));
-    console.log(JSON.parse(sessionStorage.getItem('productData')))
-}
-
-//-----------------------------------product scripts-------------------------------------------
-
-
 

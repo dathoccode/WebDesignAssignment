@@ -141,7 +141,7 @@
 
     <main class="login-container">
         <div class="logo">
-            <img src="./image/brand_logo.png" alt="automobilelogo">
+            <img src="./image/icons/brand_logo.png" alt="automobilelogo">
         </div>
         <h1>Đăng Nhập</h1>
         <p>Đăng nhập một tài khoản sử dụng cho tất cả các dịch vụ</p>
@@ -171,7 +171,7 @@
     </footer>
 
     <script>
-        function loginUser(event) {
+        function tempname(event) {
             event.preventDefault();
 
             const enteredEmail = document.getElementById('username').value;
@@ -189,6 +189,29 @@
                 alert('Tên đăng nhập hoặc mật khẩu không đúng!');
             }
         }
+        function loginUser(event) {
+          event.preventDefault();
+
+          const enteredEmail = document.getElementById('username').value;
+          const enteredPassword = document.getElementById('password').value;
+
+          // Retrieve stored credentials from register.html
+          let accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+
+          // Check if credentials match
+          // Kiểm tra xem email đã tồn tại chưa
+          const existingAccount = accounts.find(account => account.email === enteredEmail);
+          if (existingAccount &&  existingAccount.password === enteredPassword) {
+              alert('Đăng nhập thành công!');
+              window.location.href = 'index.html'; // Redirect to the trang chu
+              return;
+          }
+          else {
+              alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+              document.getElementById('username').value = "";
+              document.getElementById('password').value = "";
+          }
+      }
     </script>
 </body>
 </html>
