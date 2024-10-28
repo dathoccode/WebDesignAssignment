@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tài Khoản</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+    <main class="register-container">
+        <div class="logo">
+            <img src="./image/brand_logo.png" alt="automobilelogo">
+        </div>
+        <h1>Đăng ký tài khoản</h1>
+        <p>Một tài khoản sử dụng cho tất cả các dịch vụ của Automobile</p>
+        <form id="registerForm" onsubmit="registerUser(event)">
+            <label for="fullname">Tên đầy đủ</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Nhập tên của bạn" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+
+            <label for="phone">Số điện thoại</label>
+            <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+
+            <label for="confirmPassword">Xác nhận mật khẩu</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu" required>
+
+            <p class="terms">
+                Khi click nút đăng ký, nghĩa là bạn đã đồng ý với <a href="#">chính sách bảo mật</a> và <a href="#">thỏa thuận sử dụng</a> của chúng tôi.
+            </p>
+
+            <button type="submit" class="btn-register">Đăng ký</button>
+        </form>
+        <p class="login-link">Bạn đã có tài khoản? <a href="./login.html">Đăng nhập</a></p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Điều khoản sử dụng</a> |
+            <a href="#">Bảo mật thông tin</a> |
+            <a href="#">Trợ giúp</a>
+        </div>
+        <p class="copyright">&copy; 2024 Automobile - Nhà phân phối thiết bị di động số 1 Việt Nam</p>
+    </footer>
+
+    <script>
+        function registerUser(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                document.getElementById('password').value = ""
+                document.getElementById('confirmPassword').value = ""
+                return;
+            }
+
+            // Store user data in localStorage
+            localStorage.setItem('registeredEmail', email);
+            localStorage.setItem('registeredPassword', password);
+
+            alert('Đăng ký thành công! Đang chuyển hướng đến trang chủ...');
+            window.location.href = './login.html'; // Redirect to login
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+/*general styles*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+}
+body{
+    min-height: 100%;
+}
+a{
+    text-decoration: none;
+}
+
+
+/*--------------------------------Header----------------------------------------*/
+header li{
+    display: inline-block;
+    font-size: 24px;
+}
+.headerBanner{
+    height: 50px;
+    text-align: center;
+}
+.headerBanner li
+{
+    height: 50px;
+    text-align: center;
+    width: calc(27% - 60px);
+    padding: 0 30px;
+    line-height: 50px;
+}
+.headerBanner img{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+}
+
+.nav-container ul{
+    background-color: #225451;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+    padding: 0 5%;
+}
+.nav-container img{
+    height: 60px;
+}
+.nav-container li{
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+    height: 100%;
+}
+.nav-container i
+{
+    position: relative;
+    top: 1px;
+    right: 2px;
+    margin-right: 3px;
+}
+.nav-container ul li button:hover{
+    background-color: rgb(149, 149, 149);
+}
+.nav-container ul li button{
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: black;
+    color: #fff;
+    margin: auto 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.nav-container li a{
+    text-decoration: none;
+    color: #fff;
+}
+.nav-container input{
+    border-radius: 8px;
+    padding: 0 30px;
+    height: 30px;
+    outline: none;
+   
+}
+.fa-magnifying-glass{
+    position:absolute;
+    left: 25px;
+}
+
+
+/*---------------------------hot sale--------------------------*/
+.hot-sale-container{
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 8px;
+    background-image: linear-gradient(to top,#225451, #ffffff);
+    border: solid 3px #ddd;
+}
+.hot-sale-container h1{
+    text-align: center;
+    line-height: 45px;
+    color: red;
+}
+.fa-fire-flame-curved{
+    margin: 0 5px;
+}
+.hot-sale-content{
+    height: 330px;
+    position: relative;
+}
+.hot-sale-btn i{
+    position: absolute;
+    height: 50px;
+    width: 30px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 26px;
+    background-color: #d7d7d78e;
+    top: 40%;
+    opacity: 0;
+    border-radius: 6px;
+}
+.hot-sale-content:hover .hot-sale-btn i{
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.fa-chevron-left{
+    left: -2px;
+}
+.fa-chevron-right{
+    right: -2px;
+}
+.hot-sale-items{
+    width: 98%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.hot-sale-product-container
+{
+    width: calc(20% - 30px);
+    margin: 15px;
+    border: 3px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    position: absolute;
+    transition: all 0.3s ease-in;
+}
+.product-infor{
+    width: 100%;
+    padding: 0 10px;
+    position: relative;
+}
+.product-infor li:nth-child(1){
+    line-height: 30px;
+}
+
+.product-infor li:nth-of-type(2){
+    text-align: left;
+    margin: 5px 0;
+}
+.product-infor li:last-child{
+    font-size: 14px;
+    text-align: left;
+}
+.product-infor li:last-child i{
+    height: 100%;
+    color: #FFD700;
+}
+.product-infor img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+
+/*----------------------------hot sale product--------------------------*/
+
+.hot-sale-container{
+    list-style-type: none;
+}
+.product-container{
+    width: calc(20% - 24px);
+    padding: 10px;
+    margin: 5px 10px;
+    border: 3px solid #ddd;
+    border-radius: 16px;
+    background-color: white;
+    display: inline-block;
+}
+.product-container img{
+    max-width: 100%;
+    max-height: 100%;
+    display: inline;
+    float: left;
+}
+.product-infor li:nth-of-type(1){    /*product name*/
+    margin: 15px auto;
+    text-align: center;
+}
+.hot-sale-product-old-price{
+    text-decoration: line-through;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+.hot-sale-tag{
+    background: url(./image/icons/sale-tag.png);
+    background-size: contain;
+    width: 60px;
+    height: 30px;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -5px;
+    top: -3px;
+}
+.hot-sale-product-new-price
+{
+    color: red;
+    font-weight: bold;
+}
+
+
+
+
+/*--------------------------------Footer----------------------------------------*/
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color:#225451;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+}
+.footer-section
+{
+    width: 20%;
+    margin: 5px auto;
+}
+.collumns{
+    display: flex; /* Sử dụng Flexbox */
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
+}
+.footer-section ul li {
+    list-style: none;
+    flex: 1 0 50%; /* Mỗi phần tử chiếm 50% chiều rộng */
+    margin: 8px 0 0; /* Thêm khoảng cách giữa các phần tử */
+    padding-left: 10px;
+}
+/*  list item */
+/* General Container for Featured Section */
+.featured-container {
+    max-width: 1200px; /* Ensures alignment with the "Hot Sale" section */
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.featured-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Sets 5 items per row */
+    gap: 20px; /* Space between items */
+}
+
+/* Individual Product Card Styling */
+.product-card {
+    padding: 10px;
+    border: 3px solid #ddd;
+    border-radius: 16px;
+    background-color: white;
+    text-align: center;
+}
+
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Product Image */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Product Name, Price, and Rating */
+.product-name {
+    font-size: 19px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #ff5050;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.product-rating{
+    list-style: none;
+    color: yellow;
+    font-size:smaller;
+}
+
+.product-rating span{
+    color: #333;
+}
