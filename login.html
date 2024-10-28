@@ -14,7 +14,7 @@
         </div>
         <h1>Đăng Nhập</h1>
         <p>Đăng nhập một tài khoản sử dụng cho tất cả các dịch vụ</p>
-        <form id="loginForm" action="#" method="POST">
+        <form id="loginForm" onsubmit="return loginUser(event)">
             <label for="username">Tên đăng nhập hoặc email</label>
             <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập hoặc email" required>
 
@@ -27,7 +27,7 @@
 
             <button type="submit" class="btn-login">Đăng nhập</button>
         </form>
-        <p class="register-link">Bạn chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+        <p class="register-link">Bạn chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a></p>
     </main>
 
     <footer class="footer">
@@ -38,5 +38,26 @@
         </div>
         <p class="copyright">&copy; 2024 Automobile - Nhà phân phối thiết bị di động số 1 Việt Nam</p>
     </footer>
+
+    <script>
+        function loginUser(event) {
+            event.preventDefault();
+
+            const enteredEmail = document.getElementById('username').value;
+            const enteredPassword = document.getElementById('password').value;
+
+            // Retrieve stored credentials from register.html
+            const registeredEmail = localStorage.getItem('registeredEmail');
+            const registeredPassword = localStorage.getItem('registeredPassword');
+
+            // Check if credentials match
+            if (enteredEmail === registeredEmail && enteredPassword === registeredPassword) {
+                alert('Đăng nhập thành công!');
+                window.location.href = './homepage.html'; // Redirect to the homepage
+            } else {
+                alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+            }
+        }
+    </script>
 </body>
 </html>

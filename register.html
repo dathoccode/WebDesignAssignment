@@ -14,7 +14,7 @@
         </div>
         <h1>Đăng ký tài khoản</h1>
         <p>Một tài khoản sử dụng cho tất cả các dịch vụ của Automobile</p>
-        <form id="registerForm" action="#" method="POST">
+        <form id="registerForm" onsubmit="registerUser(event)">
             <label for="fullname">Tên đầy đủ</label>
             <input type="text" id="fullname" name="fullname" placeholder="Nhập tên của bạn" required>
 
@@ -36,7 +36,7 @@
 
             <button type="submit" class="btn-register">Đăng ký</button>
         </form>
-        <p class="login-link">Bạn đã có tài khoản? <a href="#">Đăng nhập</a></p>
+        <p class="login-link">Bạn đã có tài khoản? <a href="./login.html">Đăng nhập</a></p>
     </main>
 
     <footer class="footer">
@@ -47,5 +47,27 @@
         </div>
         <p class="copyright">&copy; 2024 Automobile - Nhà phân phối thiết bị di động số 1 Việt Nam</p>
     </footer>
+
+    <script>
+        function registerUser(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                return;
+            }
+
+            // Store user data in localStorage
+            localStorage.setItem('registeredEmail', email);
+            localStorage.setItem('registeredPassword', password);
+
+            alert('Đăng ký thành công! Đang chuyển hướng đến trang chủ...');
+            window.location.href = './login.html'; // Redirect to login
+        }
+    </script>
 </body>
 </html>
