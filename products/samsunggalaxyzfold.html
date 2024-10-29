@@ -10,23 +10,8 @@
     <link
       rel="shortcut icon" href="../image/icons/logo.png" type="image/x-icon"/>
     <title>Product</title>
-    <script>
-        //set product infor
-        //------------------------------PRODUCT TO CART--------------------------
-        function updatePrice(item){
-          const tmp = item.querySelector('#version-price').textContent
-          const colorPrice = document.querySelectorAll('#color-price')
-          for(let i = 0; i < colorPrice.length; i++){
-            colorPrice[i].textContent = tmp
-          }
-        }
-        function showImage(item){
-          document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
-        }
-        
-
-    </script>
-    <link rel="stylesheet" href="../tmpStyles.css">
+    <script src="../productScript.js"></script>
+    <link rel="stylesheet" href="../productStyles.css">
   </head>
   <body>
     <header>
@@ -41,7 +26,7 @@
     <div class="nav-container">
       <nav>
         <ul>
-          <li><a href="index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
+          <li><a href="../index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
           <li>
             <button>
               <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
@@ -73,7 +58,7 @@
 
     <!---------- Ten san pham va phan con lai ---------->
     <div class="product-content">
-      <div class="product-title">Oppo A3</div>
+      <div class="product-title">Samsung Glaxy Zfold</div>
       <div class="product-container">
         <div class="product-container-left">
           <div class="main-image">
@@ -120,9 +105,9 @@
               <input type="radio" name="color" id="color-1">
               <label for="color-1" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
-                <img src="image/samsunggalaxyzfold/samsunggalaxyzfold2.png" alt="">
+                <img src="../image/samsunggalaxyzfold/samsunggalaxyzfold4.png" alt="">
                 <div class="color-text">
-                  <p id="color-name">Đen</p>
+                  <p id="color-name">Xám</p>
                   <p id="color-price">40.990.000</p>
               </div>
               </label>
@@ -130,9 +115,9 @@
               <input type="radio" name="color" id="color-2">
               <label for="color-2" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
-                <img src="image/samsunggalaxyzfold/samsunggalaxyzfold4.png" alt="">
+                <img src="../image/samsunggalaxyzfold/samsunggalaxyzfold3.png" alt="">
                 <div class="color-text">
-                  <p id="color-name">Tím</p>
+                  <p id="color-name">Hồng</p>
                   <p id="color-price">40.990.000</p>
                 </div>
               </label>
@@ -140,9 +125,9 @@
               <input type="radio" name="color" id="color-3">
               <label for="color-3" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
-                <img src="image/samsunggalaxyzfold/samsunggalaxyzfold1.png" alt="">
+                <img src="../image/samsunggalaxyzfold/samsunggalaxyzfold10.png" alt="">
                 <div class="color-text">
-                  <p id="color-name">Trắng</p>
+                  <p id="color-name">Xanh</p>
                   <p id="color-price">40.990.000</p>
                 </div>
               </label>

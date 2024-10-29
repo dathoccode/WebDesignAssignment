@@ -185,8 +185,11 @@
           const existingAccount = accounts.find(account => account.email === enteredEmail);
           if (existingAccount &&  existingAccount.password === enteredPassword) {
               alert('Đăng nhập thành công!');
+              localStorage.setItem('loggedInUser', JSON.stringify(existingAccount));
+
               window.location.href = 'index.html'; // Redirect to the trang chu
               return;
+            
           }
           else {
               alert('Tên đăng nhập hoặc mật khẩu không đúng!');

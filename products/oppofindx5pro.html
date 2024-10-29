@@ -10,23 +10,8 @@
     <link
       rel="shortcut icon" href="../image/icons/logo.png" type="image/x-icon"/>
     <title>Product</title>
-    <script>
-        //set product infor
-        //------------------------------PRODUCT TO CART--------------------------
-        function updatePrice(item){
-          const tmp = item.querySelector('#version-price').textContent
-          const colorPrice = document.querySelectorAll('#color-price')
-          for(let i = 0; i < colorPrice.length; i++){
-            colorPrice[i].textContent = tmp
-          }
-        }
-        function showImage(item){
-          document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
-        }
-        
-
-    </script>
-    <link rel="stylesheet" href="../tmpStyles.css">
+    <script src="../productScript.js"></script>
+    <link rel="stylesheet" href="../productStyles.css">
   </head>
   <body>
     <header>
@@ -41,7 +26,7 @@
     <div class="nav-container">
       <nav>
         <ul>
-          <li><a href="index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
+          <li><a href="../index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
           <li>
             <button>
               <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
@@ -73,7 +58,7 @@
 
     <!---------- Ten san pham va phan con lai ---------->
     <div class="product-content">
-      <div class="product-title">Oppo A18</div>
+      <div class="product-title">Oppo Find X5 Pro</div>
       <div class="product-container">
         <div class="product-container-left">
           <div class="main-image">
@@ -102,14 +87,14 @@
                 <label for="version-1" onclick="updatePrice(this)" class="custom-radio">
                   <i class="fa-solid fa-circle-check"></i>
                   <p id="version-name">4GB 128GB</p>
-                  <p id="version-price">6.000.000</p>
+                  <p id="version-price">6.990.000</p>
                 </label>
             
                 <input type="radio" name="version" id="version-2">
                 <label for="version-2" onclick="updatePrice(this)" class="custom-radio">
                   <i class="fa-solid fa-circle-check"></i>
                   <p id="version-name">4GB 64GB</p>
-                  <p id="version-price">6.990.000</p>
+                  <p id="version-price">6.000.000</p>
                 </label>
             
                 
@@ -120,9 +105,9 @@
               <input type="radio" name="color" id="color-1">
               <label for="color-1" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
-                <img src="image/oppofindx5pro/oppofindx5pro1.png" alt="">
+                <img src="../image/oppofindx5pro/oppofindx5pro3.png" alt="">
                 <div class="color-text">
-                  <p id="color-name">Xanh dương</p>
+                  <p id="color-name">Trắng</p>
                   <p id="color-price">6.990.000</p>
               </div>
               </label>
@@ -130,7 +115,7 @@
               <input type="radio" name="color" id="color-2">
               <label for="color-2" class="custom-radio">
                 <i class="fa-solid fa-circle-check"></i>
-                <img src="image/oppofindx5pro/oppofindx5promain.png" alt="">
+                <img src="../image/oppofindx5pro/oppofindx5promain.png" alt="">
                 <div class="color-text">
                   <p id="color-name">Đen</p>
                   <p id="color-price">6.990.000</p>
@@ -166,7 +151,7 @@
           </div>  
 
           <div class="buy-now">
-            <a href=""><button class="buy-now-btn">Mua Ngay</button></a>
+            <button onclick="addToCart(this)" class="buy-now-btn">Mua Ngay</button>
           </div>
           
         </div>
@@ -176,7 +161,6 @@
     
 
 
-  <script src="script.js"></script>
   
   </body>
 </html>

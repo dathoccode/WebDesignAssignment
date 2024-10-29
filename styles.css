@@ -11,9 +11,8 @@ body{
 }
 a{
     text-decoration: none;
+    color: #444;
 }
-
-
 /*--------------------------------Header----------------------------------------*/
 header li{
     display: inline-block;
@@ -179,8 +178,23 @@ header li{
     max-height: 100%;
 }
 
+/*----------------------------- Count-down-timer -------------------------------- */
+.count-down-timer{
+    text-align: center;
+    line-height: 30px;
+    font-size: 24px;
+}
 
-
+.count-down-timer div{
+    display: inline-block;
+    background-color: #FFD700;
+    margin: 0 10px;
+    border-radius: 50%;
+    padding: 10px;
+    color: #ff5050;
+    justify-content: center;
+    align-items: center; 
+}
 
 /*----------------------------hot sale product--------------------------*/
 
@@ -221,6 +235,8 @@ header li{
     position: absolute;
     left: -5px;
     top: -3px;
+    text-align: center;
+    color: white
 }
 .hot-sale-product-new-price
 {
@@ -307,6 +323,7 @@ footer {
     font-size: 16px;
     font-weight: 500;
     margin: 8px 0;
+    height: 40px;
 }
 
 .product-price {

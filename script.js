@@ -47,6 +47,33 @@ function hotSaleAuto() {
 
 setInterval(hotSaleAuto, 5000);
 
+//------------------------------------count-down-timer-----------------------------------
+function countDownTimer(){
+    // Đặt thời gian đếm ngược (ví dụ: 1 giờ, 30 phút, 0 giây)
+    let countdownTime = 1 * 60 * 60 + 30 * 60; // 1 giờ và 30 phút
+    // Hàm cập nhật đồng hồ đếm ngược
+    function updateCountdown() {
+        const hours = Math.floor(countdownTime / 3600);
+        const minutes = Math.floor((countdownTime % 3600) / 60);
+        const seconds = countdownTime % 60;
+        // Cập nhật nội dung của các thẻ
+        document.querySelector('.count-down-timer .hour').textContent = String(hours).padStart(2, '0');
+        document.querySelector('.count-down-timer .min').textContent = String(minutes).padStart(2, '0');
+        document.querySelector('.count-down-timer .sec').textContent = String(seconds).padStart(2, '0');
+        // Giảm thời gian đếm ngược
+        if (countdownTime > 0) {
+        countdownTime--;
+        } else {
+        clearInterval(countdownInterval); // Dừng đồng hồ khi đếm ngược đến 0
+        }
+    }
+    // Cập nhật đồng hồ mỗi giây
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    // Gọi hàm ngay lập tức để hiển thị thời gian ban đầu
+    updateCountdown();
+}
+countDownTimer()
+
 // Initialize button visibility
 updateButtonVisibility();
 
