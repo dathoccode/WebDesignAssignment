@@ -50,7 +50,8 @@ setInterval(hotSaleAuto, 5000);
 // Initialize button visibility
 updateButtonVisibility();
 
-$(window).unload(function(){
-    localStorage.accounts = undefined
-})
-
+console.log(localStorage)
+const cartArr = []
+if(localStorage.getItem("cartArr") === null){
+    localStorage.setItem("cartArr", JSON.stringify(cartArr))
+}

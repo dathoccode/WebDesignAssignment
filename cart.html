@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px 0;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            overflow-x: visible;
+        }
+        h1 {
+            text-align: center;
+        }
+        .cart {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .item-details {
+            display: flex;
+            width: 100%;
+            position: relative;
+        }
+        .item-image{
+            width: 100px;
+            float: left
+        }
+        .item-image img{
+            max-width: 100%;
+        }
+        .item-infor{
+            float: left;
+            line-height: 30px;
+            font-size: 16px;
+            margin: auto 30px;
+        }
+        .quantity{
+            position: absolute;
+            right: 40px;
+            top: 40%;
+            font-size: 18px;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        // Hàm định dạng giá
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Định dạng số thành xxx.xxx
+        }
+
+        const itemList = JSON.parse(localStorage.getItem("cartArr"))
+        console.log(itemList)
+        let total = 0
+        let str = "";
+        
+        for(let i = 0;  i < itemList.length; i++){
+            let priceString = itemList[i].sp.price.replace(/\./g, '')
+            total +=  parseFloat(priceString) * parseInt(itemList[i].qty)
+            str += `<div class="item-details">
+                <div class="item-image">
+                    <img src="/image/oppoa18/oppoa181.png" alt="">
+                </div>
+                <div class="item-infor">
+                    <h3>${itemList[i].sp.name}</h3>
+                    <p>Giá: ${itemList[i].sp.price}</p>
+                </div>
+                <div class="quantity">
+                    <p>Số lượng: ${itemList[i].qty}</p>
+                </div>
+            </div>`
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemList = document.getElementsByClassName('item-list')[0];
+            itemList.innerHTML = str;
+        });
+        
+        document.querySelector('.total-price').innerHTML = "Tổng: " +  total
+        
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="headerBanner">
+            <li>Giao hàng nhanh</li>
+            <li><img src="./image/icons/medal.png" alt="medal_icon">Sản phẩm chính hãng</li>
+            <li>Bảo hành lâu dài</li>
+        </div>
+    </header>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="./image/icons/brand_logo.png" class="brand-logo"></a></li>
+                <li><button><i class="fa-solid fa-list"></i><a href="">Danh mục</a></button></li>
+                <li><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Nhập từ khóa tìm kiếm"></li>
+                <li><button><i class="fa-solid fa-phone"></i><a href="">Gọi mua hàng</a></button></li>
+                <li><button><i class="fa-solid fa-cart-shopping"></i><a href="">Giỏ hàng</a></button></li>
+                <li><button><i class="fa-solid fa-right-to-bracket"></i><a href="./login.html">Đăng nhập</a></button></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="cart">
+        <h1>Giỏ Hàng Của Bạn</h1>
+
+        <div class="item-list">
+            <div class="item-details">
+                <div class="item-image">
+                    <img src="/image/oppoa18/oppoa181.png" alt="">
+                </div>
+                <div class="item-infor">
+                    <h3>Tên sản phẩm</h3>
+                    <p>Giá: 100000</p>
+                </div>
+                <div class="quantity">
+                    <p>Số lượng: </p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="total-price">
+
+        </div>
+        
+        
+
+        <a href="checkout.html" class="checkout-btn">Thanh Toán</a>
+    </div>
+</body>
+
+<footer>
+    <div class="footer-section">
+        <h3>Tổng đài hỗ trợ</h3>
+        <ul>
+            <li>Gọi mua hàng</li>
+            <li>Gọi phản hồi</li>
+            <li>Gọi hỗ trợ</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Phương thức thanh toán</h3>
+        <ul>
+            <li>Thanh toán tín dụng (credit)</li>
+            <li>Thanh toán online</li>
+            <li>Thanh toán bằng tiền mặt (cash)</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Doanh nghiệp hợp tác</h3>
+        <ul class="collumns">
+            <li>Xiaomi</li>
+            <li>Samsung</li>
+            <li>Apple</li>
+            <li>Vsmart</li>
+            <li>Nokia</li>
+            <li>Huawei</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Thông tin chính sách</h3>
+        <ul>
+            <li>Chính sách mua hàng</li>
+            <li>Chính sách bảo hành</li>
+            <li>Chính sách đổi trả</li>
+        </ul>
+    </div>
+  </footer>
+</html>

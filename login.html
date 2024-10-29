@@ -171,24 +171,6 @@
     </footer>
 
     <script>
-        function tempname(event) {
-            event.preventDefault();
-
-            const enteredEmail = document.getElementById('username').value;
-            const enteredPassword = document.getElementById('password').value;
-
-            // Retrieve stored credentials from register.html
-            const registeredEmail = localStorage.getItem('registeredEmail');
-            const registeredPassword = localStorage.getItem('registeredPassword');
-
-            // Check if credentials match
-            if (enteredEmail === registeredEmail && enteredPassword === registeredPassword) {
-                alert('Đăng nhập thành công!');
-                window.location.href = 'index.html'; // Redirect to the trang chu
-            } else {
-                alert('Tên đăng nhập hoặc mật khẩu không đúng!');
-            }
-        }
         function loginUser(event) {
           event.preventDefault();
 
