@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/5e965db3d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="shortcut icon" href="../image/icons/logo.png" type="image/x-icon"/>
+    <title>Product</title>
+    <script>
+        //set product infor
+        //------------------------------PRODUCT TO CART--------------------------
+        function updatePrice(item){
+          const tmp = item.querySelector('#version-price').textContent
+          const colorPrice = document.querySelectorAll('#color-price')
+          for(let i = 0; i < colorPrice.length; i++){
+            colorPrice[i].textContent = tmp
+          }
+        }
+        function showImage(item){
+          document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
+        }
+        
+
+    </script>
+    <link rel="stylesheet" href="../tmpStyles.css">
+  </head>
+  <body>
+    <header>
+      <div class="headerBanner">
+        <li>Giao hàng nhanh</li>
+        <li>
+          <img src="../image/icons/medal.png" alt="medal_icon" />Sản phẩm chính hãng
+        </li>
+        <li>Bảo hành lâu dài</li>
+      </div>
+    </header>
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><a href="index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
+          <li>
+            <button>
+              <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
+            </button>
+          </li>
+          <li>
+            <i class="fa-solid fa-magnifying-glass"></i
+            ><input type="text" placeholder="Nhập từ khóa tìm kiếm" />
+          </li>
+          <li>
+            <button>
+              <i class="fa-solid fa-phone"></i><a href="">Gọi mua hàng</a>
+            </button>
+          </li>
+          <li>
+            <button>
+              <i class="fa-solid fa-cart-shopping"></i><a href="">Giỏ hàng</a>
+            </button>
+          </li>
+          <li>
+            <button>
+              <i class="fa-solid fa-right-to-bracket"></i
+              ><a href="">Đăng nhập</a>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!---------- Ten san pham va phan con lai ---------->
+    <div class="product-content">
+      <div class="product-title">Oppo A3</div>
+      <div class="product-container">
+        <div class="product-container-left">
+          <div class="main-image">
+            <img src="../image/xiaomi14ultra/xiaomi14ultramain.png" alt="Tên sản phẩm" />
+          </div>
+          <div class="thumbnails">
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra1.png" alt="Thumbnail 1" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra2.png" alt="Thumbnail 2" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra3.png" alt="Thumbnail 3" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra4.png" alt="Thumbnail 4" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra5.png" alt="Thumbnail 5" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra6.png" alt="Thumbnail 6" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra7.png" alt="Thumbnail 7" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra8.png" alt="Thumbnail 8" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra9.png" alt="Thumbnail 9" /></button>
+            <button onclick="showImage(this)"><img src="../image/xiaomi14ultra/xiaomi14ultra10.png" alt="Thumbnail 10" /></button>
+          </div>
+        </div>
+
+        <!---------------------Right------------------------------------------------ -->
+
+        <div class="product-container-right">
+            <div class="version-container">
+              <h3>Chọn phiên bản:</h3>
+                <input type="radio" name="version" id="version-1">
+                <label for="version-1" onclick="updatePrice(this)" class="custom-radio">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <p id="version-name">8GB 256GB</p>
+                  <p id="version-price">30.490.000<sup>đ</sup></p>
+                </label>
+            
+                <input type="radio" name="version" id="version-2">
+                <label for="version-2" onclick="updatePrice(this)" class="custom-radio">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <p id="version-name">4GB 64GB</p>
+                  <p id="version-price">30.990.000<sup>đ</sup></p>
+                </label>
+            
+                
+            </div>
+
+            <div class="color-container">
+              <h3>Chọn màu sản phẩm:</h3>
+              <input type="radio" name="color" id="color-1">
+              <label for="color-1" class="custom-radio">
+                <i class="fa-solid fa-circle-check"></i>
+                <img src="image/xiaomi14ultra/xiaomi14ultra2.png" alt="">
+                <div class="color-text">
+                  <p id="color-name">Đen</p>
+                  <p id="color-price">30.990.000</p>
+              </div>
+              </label>
+
+              <input type="radio" name="color" id="color-2">
+              <label for="color-2" class="custom-radio">
+                <i class="fa-solid fa-circle-check"></i>
+                <img src="image/xiaomi14ultra/xiaomi14ultra4.png" alt="">
+                <div class="color-text">
+                  <p id="color-name">Tím</p>
+                  <p id="color-price">30.990.000</p>
+                </div>
+              </label>
+
+              <input type="radio" name="color" id="color-3">
+              <label for="color-3" class="custom-radio">
+                <i class="fa-solid fa-circle-check"></i>
+                <img src="image/xiaomi14ultra/xiaomi14ultra1.png" alt="">
+                <div class="color-text">
+                  <p id="color-name">Trắng</p>
+                  <p id="color-price">30.990.000</p>
+                </div>
+              </label>
+
+              
+          </div>
+
+          <div class="policy-section">
+            <h2>Chính Sách</h2>
+            <ul class="policy-list">
+              <li>
+                <i class="fa-solid fa-truck"></i>
+                <strong>Giao Hàng:</strong> Miễn phí giao hàng toàn quốc cho đơn hàng
+                trên 500,000 VNĐ.
+              </li>
+              <li>
+                <i class="fa-solid fa-rotate-left"></i>
+                <strong>Đổi Trả:</strong> Đổi trả miễn phí trong vòng 30 ngày nếu sản
+                phẩm có lỗi từ nhà sản xuất.
+              </li>
+              <li>
+                <i class="fa-solid fa-shield-halved"></i>
+                <strong>Bảo Hành:</strong> Bảo hành chính hãng 12 tháng, hỗ trợ sửa
+                chữa và thay thế linh kiện.
+              </li>
+              <li>
+                <i class="fa-solid fa-headset"></i>
+                <strong>Hỗ Trợ:</strong> Hỗ trợ 24/7 qua hotline và chat trực tuyến.
+              </li>
+            </ul>
+          </div>  
+
+          <div class="buy-now">
+            <a href=""><button class="buy-now-btn">Mua Ngay</button></a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+
+  <script src="script.js"></script>
+  
+  </body>
+</html>
