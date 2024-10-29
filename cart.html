@@ -99,14 +99,16 @@
             total +=  parseFloat(priceString) * parseInt(itemList[i].qty)
             str += `<div class="item-details">
                 <div class="item-image">
-                    <img src="/image/oppoa18/oppoa181.png" alt="">
+                    <img src="${itemList[i].sp.image}" alt="">
                 </div>
                 <div class="item-infor">
                     <h3>${itemList[i].sp.name}</h3>
                     <p>Giá: ${itemList[i].sp.price}</p>
                 </div>
                 <div class="quantity">
+                    <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-plus"></i></button>
                     <p>Số lượng: ${itemList[i].qty}</p>
+                    <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-minus"></i></button>
                 </div>
             </div>`
         }
@@ -116,7 +118,53 @@
         });
         
         document.querySelector('.total-price').innerHTML = "Tổng: " +  total
+        function updateQuant(button) {
+            
+            // Tìm phần tử sản phẩm tương ứng
+            const item =  JSON.parse(localStorage.getItem("cartArr"))[button.id];
+            
+            // Kiểm tra xem nút bấm là nút tăng hay giảm
+            if (button.innerHTML.includes("plus")) {
+                // Tăng số lượng
+                item.qty += 1;
+            } else {
+                // Giảm số lượng nhưng không cho phép số lượng âm
+                if (item.qty > 1) {
+                    item.qty -= 1;
+                }
+            }
+            
+            // Cập nhật lại danh sách sản phẩm trong localStorage
+            localStorage.setItem("cartArr", JSON.stringify(itemList));
+            
+            // Cập nhật lại giao diện
+            const itemListContainer = document.getElementsByClassName('item-list')[0];
+            itemListContainer.innerHTML = ''; // Xóa nội dung hiện tại
+            let str = '';
+            let total = 0;
         
+            for (let i = 0; i < itemList.length; i++) {
+                let priceString = itemList[i].sp.price.replace(/\./g, '');
+                total += parseFloat(priceString) * parseInt(itemList[i].qty);
+                str += `<div class="item-details">
+                            <div class="item-image">
+                                <img src="/image/oppoa18/oppoa181.png" alt="">
+                            </div>
+                            <div class="item-infor">
+                                <h3>${itemList[i].sp.name}</h3>
+                                <p>Giá: ${itemList[i].sp.price}</p>
+                            </div>
+                            <div class="quantity">
+                                <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-plus"></i></button>
+                                <p>Số lượng: ${itemList[i].qty}</p>
+                                <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-minus"></i></button>
+                            </div>
+                        </div>`;
+            }
+        
+            itemListContainer.innerHTML = str;
+            document.querySelector('.total-price').innerHTML = "Tổng: " + formatPrice(total);
+        }
 
     </script>
 </head>
@@ -145,15 +193,20 @@
 
         <div class="item-list">
             <div class="item-details">
-                <div class="item-image">
-                    <img src="/image/oppoa18/oppoa181.png" alt="">
-                </div>
-                <div class="item-infor">
-                    <h3>Tên sản phẩm</h3>
-                    <p>Giá: 100000</p>
-                </div>
-                <div class="quantity">
-                    <p>Số lượng: </p>
+                <div class="item-details">
+                    <div class="item-image">
+                        <img src="/image/oppoa18/oppoa181.png" alt="">
+                    </div>
+                    <div class="item-infor">
+                        <h3>${itemList[i].sp.name}</h3>
+                        <p>Giá: ${itemList[i].sp.price}</p>
+                    </div>
+                    <div class="quantity">
+                        <button onclick="updateQuant(this)"><i class="fa-solid fa-plus"></i></button>
+                        <p>Số lượng: ${itemList[i].qty}</p>
+                        <button onclick="updateQuant(this)"><i class="fa-solid fa-minus"></i></button>
+
+                    </div>
                 </div>
             </div>
             

@@ -8,32 +8,17 @@
       crossorigin="anonymous"
     ></script>
     <link
-      rel="shortcut icon" href="./image/icons/logo.png" type="image/x-icon"/>
+      rel="shortcut icon" href="../image/icons/logo.png" type="image/x-icon"/>
     <title>Product</title>
-    <script>
-        //set product infor
-        //------------------------------PRODUCT TO CART--------------------------
-        function updatePrice(item){
-          const tmp = item.querySelector('#version-price').textContent
-          const colorPrice = document.querySelectorAll('#color-price')
-          for(let i = 0; i < colorPrice.length; i++){
-            colorPrice[i].textContent = tmp
-          }
-        }
-        function showImage(item){
-          document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
-        }
-        
-
-    </script>
-    <link rel="stylesheet" href="tmpStyles.css">
+    <script src="../productScript.js"></script>
+    <link rel="stylesheet" href="../productStyles.css">
   </head>
   <body>
     <header>
       <div class="headerBanner">
         <li>Giao hàng nhanh</li>
         <li>
-          <img src="./image/icons/medal.png" alt="medal_icon" />Sản phẩm chính hãng
+          <img src="../image/icons/medal.png" alt="medal_icon" />Sản phẩm chính hãng
         </li>
         <li>Bảo hành lâu dài</li>
       </div>
@@ -41,7 +26,7 @@
     <div class="nav-container">
       <nav>
         <ul>
-          <li><a href="index.html"><img src="./image/icons/brand_logo.png" class="brand-logo" /></li></a>
+          <li><a href="index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
           <li>
             <button>
               <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
@@ -77,19 +62,19 @@
       <div class="product-container">
         <div class="product-container-left">
           <div class="main-image">
-            <img src="./image/oppoa3/oppoa3main.png" alt="Tên sản phẩm" />
+            <img src="../image/oppoa3/oppoa3main.png" alt="Tên sản phẩm" />
           </div>
           <div class="thumbnails">
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa31.png" alt="Thumbnail 1" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa32.png" alt="Thumbnail 2" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa33.png" alt="Thumbnail 3" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa34.png" alt="Thumbnail 4" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa35.png" alt="Thumbnail 5" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa36.png" alt="Thumbnail 6" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa37.png" alt="Thumbnail 7" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa38.png" alt="Thumbnail 8" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa39.png" alt="Thumbnail 9" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa3/oppoa310.png" alt="Thumbnail 10" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa31.png" alt="Thumbnail 1" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa32.png" alt="Thumbnail 2" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa33.png" alt="Thumbnail 3" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa34.png" alt="Thumbnail 4" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa35.png" alt="Thumbnail 5" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa36.png" alt="Thumbnail 6" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa37.png" alt="Thumbnail 7" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa38.png" alt="Thumbnail 8" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa39.png" alt="Thumbnail 9" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa3/oppoa310.png" alt="Thumbnail 10" /></button>
           </div>
         </div>
 
@@ -176,7 +161,7 @@
           </div>  
 
           <div class="buy-now">
-            <a href=""><button class="buy-now-btn">Mua Ngay</button></a>
+            <a href=""><button onclick="addToCart(this)" class="buy-now-btn">Mua Ngay</button></a>
           </div>
           
         </div>

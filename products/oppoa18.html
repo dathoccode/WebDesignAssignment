@@ -5,58 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/5e965db3d5.js" crossorigin="anonymous"></script>
     <link
-      rel="shortcut icon" href="./image/icons/logo.png" type="image/x-icon"/>
+      rel="shortcut icon" href="../image/icons/logo.png" type="image/x-icon"/>
     <title>Product</title>
-    <script>
-        //set product information
-        //------------------------------PRODUCT TO CART--------------------------
-        function updatePrice(item){
-          const tmp = item.querySelector('#version-price').textContent
-          const colorPrice = document.querySelectorAll('#color-price')
-          for(let i = 0; i < colorPrice.length; i++){
-            colorPrice[i].textContent = tmp
-          }
-        }
-        function showImage(item){
-          document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
-        }
-        let cart;
-        function addToCart(){
-          //goi bien cartArr de luu san pham
-          const itemName = document.querySelector('.product-title').textContent
-          const itemPrice = document.querySelector('#color-price').textContent
-          const itemImage = document.querySelector('[alt="Tên sản phẩm"]').src
-          cart = JSON.parse(localStorage.getItem("cartArr"))
-          
-          let flag = false
-          //if the product is already in cart increase quantity
-          for(let i =  0; i < cart.length; i++){
-            if(cart[i].sp.name == itemName){
-              cart[i].qty++;
-              flag = true
-          }}
-          
-          //if there  is no same product in cart -> add it
-
-          if(!flag){
-            item = {name:  itemName, price: itemPrice, image: itemImage}
-            cartItem = {qty : 1, sp: item}
-            cart.push(cartItem)
-          }
-          localStorage.setItem("cartArr", JSON.stringify(cart))
-          window.location.href = "cart.html"
-
-        }
-
-    </script>
-    <link rel="stylesheet" href="tmpStyles.css">
+    <script src="../productScript.js"></script>
+    <link rel="stylesheet" href="../productStyles.css">
   </head>
   <body>
     <header>
       <div class="headerBanner">
         <li>Giao hàng nhanh</li>
         <li>
-          <img src="./image/icons/medal.png" alt="medal_icon" />Sản phẩm chính hãng
+          <img src="../image/icons/medal.png" alt="medal_icon" />Sản phẩm chính hãng
         </li>
         <li>Bảo hành lâu dài</li>
       </div>
@@ -64,7 +23,7 @@
     <div class="nav-container">
       <nav>
         <ul>
-          <li><a href="index.html"><img src="./image/icons/brand_logo.png" class="brand-logo" /></li></a>
+          <li><a href="index.html"><img src="../image/icons/brand_logo.png" class="brand-logo" /></li></a>
           <li>
             <button>
               <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
@@ -100,19 +59,19 @@
       <div class="product-container">
         <div class="product-container-left">
           <div class="main-image">
-            <img src="./image/oppoa18/oppoa18main.png" alt="Tên sản phẩm" />
+            <img src="../image/oppoa18/oppoa18main.png" alt="Tên sản phẩm" />
           </div>
           <div class="thumbnails">
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa181.png" alt="Thumbnail 1" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa182.png" alt="Thumbnail 2" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa183.png" alt="Thumbnail 3" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa184.png" alt="Thumbnail 4" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa185.png" alt="Thumbnail 5" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa186.png" alt="Thumbnail 6" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa187.png" alt="Thumbnail 7" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa188.png" alt="Thumbnail 8" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa189.png" alt="Thumbnail 9" /></button>
-            <button onclick="showImage(this)"><img src="./image/oppoa18/oppoa1810.png" alt="Thumbnail 10" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa181.png" alt="Thumbnail 1" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa182.png" alt="Thumbnail 2" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa183.png" alt="Thumbnail 3" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa184.png" alt="Thumbnail 4" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa185.png" alt="Thumbnail 5" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa186.png" alt="Thumbnail 6" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa187.png" alt="Thumbnail 7" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa188.png" alt="Thumbnail 8" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa189.png" alt="Thumbnail 9" /></button>
+            <button onclick="showImage(this)"><img src="../image/oppoa18/oppoa1810.png" alt="Thumbnail 10" /></button>
           </div>
         </div>
 
