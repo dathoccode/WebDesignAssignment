@@ -12,16 +12,15 @@
           }
           let cart;
           function addToCart(item){
-            //goi bien cartArr de luu san pham
-            
-            //const itemVersion = document.querySelector('input[name="version"]:checked').value
+            if(!document.querySelector('input[name="version"]:checked') || !document.querySelector('input[name="color"]:checked')){
+              alert("Hãy chọn màu và phiên bản!")
+            }
             const itemVersion = document.querySelector(`label[for="${document.querySelector('input[name="version"]:checked').id}"]`).querySelector('#version-name').textContent;
-            
             const itemName = document.querySelector('.product-title').textContent
             const itemPrice = document.querySelector('#color-price').textContent
             const itemImage = '.' + '/image' + document.querySelector('[alt="Tên sản phẩm"]').src.split('/image')[1];
             const itemColor = document.querySelector(`label[for="${document.querySelector('input[name="color"]:checked').id}"]`).querySelector('#color-name').textContent;
-            console.log(itemColor)
+            
 
 
             cart = JSON.parse(localStorage.getItem("cartArr")) || []
@@ -32,14 +31,11 @@
               if(cart[i].sp.name == itemName &&  cart[i].sp.color == itemColor && cart[i].sp.version == itemVersion){
                 cart[i].qty++;
                 flag = true
-                flag = true
             }}
             
             //if there  is no same product in cart -> add it
-  
             if(!flag){
               item = {name:  itemName, price: itemPrice, image: itemImage, version: itemVersion, color:  itemColor}
-
               cartItem = {qty : 1, sp: item}
               cart.push(cartItem)
             }

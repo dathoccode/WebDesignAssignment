@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ Hàng</title>
     <link rel="stylesheet" href="styles.css">
+    <script
+      src="https://kit.fontawesome.com/5e965db3d5.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px 0 0;
             background-color: #f4f4f4;
-            min-height: 100vh;
+            min-height: 100%;
             overflow-x: visible;
         }
         h1 {
@@ -57,8 +61,26 @@
             right: 40px;
             top: 40%;
             font-size: 18px;
+            display: flex;
         }
-        .total {
+        .quantity p{
+            line-height: 30px;
+            margin: 0 8px;
+        }
+        .quantity button{
+            border: solid 3px  #333;
+            height: 30px;
+            width: 30px;
+            border-radius: 8px;
+        }
+        .quantity i{
+            color: #333;
+            font-size: 20px;
+            margin: auto;
+            position: relative;
+            top: 1px
+        }
+        .total-price{
             font-weight: bold;
             margin-top: 20px;
             text-align: right;
@@ -78,6 +100,12 @@
         }
         .checkout-btn:hover {
             background-color: #218838;
+        }
+        .cart-empty-noti{
+            font-size: 20px;
+            margin: 10px auto;
+            text-align: center;
+            padding: 20px;
         }
         footer{
             position: relative;
@@ -110,32 +138,16 @@
         <h1>Giỏ Hàng Của Bạn</h1>
 
         <div class="item-list">
-            <div class="item-details">
-                <div class="item-details">
-                    <div class="item-image">
-                        <img src="/image/oppoa18/oppoa181.png" alt="">
-                    </div>
-                    <div class="item-infor">
-                        <h3>${itemList[i].sp.name}</h3>
-                        <p>Giá: ${itemList[i].sp.price}</p>
-                    </div>
-                    <div class="quantity">
-                        <button onclick="updateQuant(this)"><i class="fa-solid fa-plus"></i></button>
-                        <p>Số lượng: ${itemList[i].qty}</p>
-                        <button onclick="updateQuant(this)"><i class="fa-solid fa-minus"></i></button>
-
-                    </div>
-                </div>
+            <div class="cart-empty-noti">
+                <h2>Giỏ hàng của bạn hiện đang trống</h2>
             </div>
-            
         </div>
         <div class="total-price">
-
         </div>
         
         
     </div>
-    <a href="checkout.html" class="checkout-btn">Thanh Toán</a>
+    <div onclick="purchase()" class="checkout-btn">Thanh Toán</div>
     <footer>
         <div class="footer-section">
             <h3>Tổng đài hỗ trợ</h3>
@@ -173,50 +185,74 @@
             </ul>
         </div>
       </footer>
+      
 </body>
 
 
   <script>
     // Hàm định dạng giá
+    let total = 0, str = ""
+    let cart = JSON.parse(localStorage.getItem("cartArr"))  || [];
     function formatPrice(price) {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Định dạng số thành xxx.xxx
     }
-
-    const itemList = JSON.parse(localStorage.getItem("cartArr"))
-    console.log(itemList)
-    let total = 0
-    let str = "";
-    for(let i = 0;  i < itemList.length; i++){
-        let priceString = itemList[i].sp.price.replace(/\./g, '')
-        total +=  parseFloat(priceString) * parseInt(itemList[i].qty)
-        str += `<div class="item-details">
-            <div class="item-image">
-                <img src="${itemList[i].sp.image}" alt="">
-            </div>
-            <div class="item-infor">
-                <h3>${itemList[i].sp.name}</h3>
-                <p>Giá: ${itemList[i].sp.price}</p>
-                <p>Phiên bản: ${itemList[i].sp.version}</p>
-                <p>Màu: ${itemList[i].sp.color}</p>
-            </div>
-            <div class="quantity">
-                <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-plus"></i></button>
-                <p>Số lượng: ${itemList[i].qty}</p>
-                <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-minus"></i></button>
-            </div>
-        </div>`
+    function loadContent(){
+        //get cart from local storage to check for update
+        cart = JSON.parse(localStorage.getItem("cartArr"))  || [];
+        total = 0
+        str = "";
+        for(let i = 0;  i < cart.length; i++){
+            let priceString = cart[i].sp.price.replace(/\./g, '')
+            total +=  parseFloat(priceString) * parseInt(cart[i].qty)
+            str += `<div class="item-details">
+                <div class="item-image">
+                    <img src="${cart[i].sp.image}" alt="">
+                </div>
+                <div class="item-infor">
+                    <h3>${cart[i].sp.name}</h3>
+                    <p>Giá: ${cart[i].sp.price}</p>
+                    <p>Phiên bản: ${cart[i].sp.version}</p>
+                    <p>Màu: ${cart[i].sp.color}</p>
+                </div>
+                <div class="quantity">
+                    <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-minus"></i></button>
+                    <p>Số lượng: ${cart[i].qty}</p>
+                    <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>`
+        }
+        if(str != ''){
+            document.getElementsByClassName('item-list')[0].innerHTML = str
+        }
+        else{
+            document.getElementsByClassName('item-list')[0].innerHTML = `<div class="cart-empty-noti">
+                <h2>Giỏ hàng của bạn hiện đang trống</h2>
+            </div>`
+        }
+        document.querySelector('.total-price').innerHTML = "Tổng giá trị: " + formatPrice(total);
     }
-    document.addEventListener('DOMContentLoaded', function() {
-        const itemList = document.getElementsByClassName('item-list')[0];
-        itemList.innerHTML = str;
-        if(document.querySelector("body").style.height > 0.9 *window.innerHeight){
+    loadContent()
+        
+    document.addEventListener('DOMContentLoaded', function(){
+        if(document.querySelector("body").scrollHeight < 0.9 * window.innerHeight){
+
+            document.querySelector("footer").style.position = "absolute";
+            document.querySelector("footer").style.bottom = 0;
+        }
+        else{
             document.querySelector("footer").style.position = "relative";
         }
-    });
+    })
     
+    
+
     document.querySelector('.total-price').innerHTML = "Tổng: " +  formatPrice(total)
+
+    //update quantity of item when click plus or minus button
+
     function updateQuant(button) {
         
+        const itemList = JSON.parse(localStorage.getItem("cartArr"))
         // Tìm phần tử sản phẩm tương ứng
         const item =  JSON.parse(localStorage.getItem("cartArr"))[button.id];
         
@@ -226,42 +262,39 @@
             item.qty += 1;
         } else {
             // Giảm số lượng nhưng không cho phép số lượng âm
-            if (item.qty > 1) {
+            if (item.qty >= 1) {
                 item.qty -= 1;
             }
+        }
+        //
+        if(item.qty <= 0){
+            itemList.splice(button.id, 1)
+            for (let i = button.id; i < itemList.length; i++) {
+                itemList[i].id = i; // Update the index
+            }
+        }
+        else{
+            itemList[button.id] = item
         }
         
         // Cập nhật lại danh sách sản phẩm trong localStorage
         localStorage.setItem("cartArr", JSON.stringify(itemList));
         
         // Cập nhật lại giao diện
-        const itemListContainer = document.getElementsByClassName('item-list')[0];
-        itemListContainer.innerHTML = ''; // Xóa nội dung hiện tại
-        let str = '';
-        let total = 0;
+        loadContent()
         
-        for (let i = 0; i < itemList.length; i++) {
-            let priceString = itemList[i].sp.price.replace(/\./g, '');
-            total += parseFloat(priceString) * parseInt(itemList[i].qty);
-            str += `<div class="item-details">
-                        <div class="item-image">
-                            <img src="/image/oppoa18/oppoa181.png" alt="">
-                        </div>
-                        <div class="item-infor">
-                            <h3>${itemList[i].sp.name}</h3>
-                            <p>Giá: ${itemList[i].sp.price}</p>
-                        </div>
-                        <div class="quantity">
-                            <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-plus"></i></button>
-                            <p>Số lượng: ${itemList[i].qty}</p>
-                            <button onclick="updateQuant(this)" id=${i}><i class="fa-solid fa-minus"></i></button>
-                        </div>
-                    </div>`;
-        }
-    
-        itemListContainer.innerHTML = str;
-        document.querySelector('.total-price').innerHTML = "Tổng: " + formatPrice(total);
     }
-    
+    function purchase(){
+        if(cart == null){
+            alert("Giỏ hàng rỗng. Hãy chọn sản phẩm trước khi thanh toán.")
+            console.log("abv")
+            return
+        }
+        alert("Thanh toán thành công");
+        cart = []
+        localStorage.setItem("cartArr", JSON.stringify(cart))
+        total = 0
+        loadContent()
+    }
 </script>
 </html>
