@@ -26,6 +26,9 @@
         <li>Bảo hành lâu dài</li>
       </div>
     </header>
+
+
+    <!-- ----------------------nAV------------------------------ -->
     <div class="nav-container">
       <nav>
         <ul>
@@ -62,6 +65,14 @@
         </ul>
       </nav>
     </div>
+
+    <!-------------------POP UP ADVERTISMENT--------------------------->
+    <div class="popup-advertisement">
+        <img src="./image/icons/banner2.webp" alt="pop-up-banner">
+        <button onclick="closePopup()" class="exit-btn"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+
+    <!-- -----------------HOT SALE--------------- -->
     <section class="hot-sale-container">
       <h1>
         <i class="fa-solid fa-fire-flame-curved"></i>HOT SALE<i
@@ -579,66 +590,12 @@
 
   <script src="./script.js"></script>
   <script>
-    /// thanh tim kiếm
-window.onload = function (){
-  document.getElementById("searchInput").addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-          event.preventDefault();
-          const query = this.value.trim().toLowerCase();
-          const searchMap = {
-              "oppo a3": "products/oppoa3.html",
-              "oppo a18": "products/oppoa18.html",
-              "samsung galaxy a35": "products/samsunggalaxya35.html",
-              "xiaomi 14 ultra": "products/xiaomi14ultra.html",
-              "oppo find x5 pro": "products/oppofindx5pro.html",
-              "xiaomi poco x6 pro": "products/xiaomipocox6pro.html",
-              "samsung galaxy s23": "products/samsunggalaxys23.html",
-              "samsung zflip 6": "products/samsungzflip6.html",
-              "xiaomi redmi note 13": "products/xiaomiredminote13.html",
-      };
-
-      if (searchMap[query]) {
-          window.location.href = searchMap[query];
-      } else {
-          alert("Không tìm thấy sản phẩm phù hợp.");
-      }
-    }
-});
-};
+    
 
 
 
-window.onload = function() {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
-    if (loggedInUser) {
-        // Thay đổi nội dung của nút đăng nhập thành tên người dùng
-        const loginButton = document.getElementById('loginButton');
-        if (loginButton) {
-            // Ẩn nút đăng nhập
-            loginButton.style.display = 'none';
 
-            // Tạo phần tử hiển thị lời chào
-            const welcomeMessage = document.createElement('span');
-            welcomeMessage.innerHTML = `Xin chào ${loggedInUser.fullname}`;
-            welcomeMessage.style.marginRight = '10px';
-            welcomeMessage.style.color = 'White'
-            welcomeMessage.style.overflow = "ellipsis"
-            welcomeMessage.style.backgroundColor ="black"
-            loginButton.parentNode.appendChild(welcomeMessage);
-
-            // Tạo nút đăng xuất và thêm vào
-            const logoutButton = document.createElement('button');
-            logoutButton.innerText = 'Đăng xuất';
-            logoutButton.classList.add('btn-logout'); // Thêm lớp CSS nếu cần
-            logoutButton.onclick = function() {
-                localStorage.removeItem('loggedInUser'); // Xóa thông tin đăng nhập
-                window.location.reload(); // Tải lại trang
-            };
-            loginButton.parentNode.appendChild(logoutButton);
-        }
-    }
-};
-
+  
   </script>
 </html>

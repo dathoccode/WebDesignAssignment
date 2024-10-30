@@ -41,7 +41,6 @@ function hotSaleAuto() {
         smoothSlide(1);
     } else {
         index = 0; // Reset to first set of products
-        updateProductPositions();
     }
 }
 
@@ -77,8 +76,90 @@ countDownTimer()
 // Initialize button visibility
 updateButtonVisibility();
 
-console.log(localStorage)
 const cartArr = []
-if(localStorage.getItem("cartArr") === null){
+if(localStorage.getItem("cartArr") == []){
     localStorage.setItem("cartArr", JSON.stringify(cartArr))
+}
+
+
+
+/// thanh tim kiếm
+
+document.getElementById("searchInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        let query = this.value.trim().toLowerCase();
+        const keyWord = {
+            "products/oppoa3.html": ["oppo a3", "oppo a3 5g", "oppo a3 pro"],
+            "products/oppoa18.html": ["oppo a18", "oppo a18 5g"],
+            "products/samsunggalaxya35.html": ["samsung galaxy a35", "samsung a35", "a35", "35"],
+            "products/xiaomi14ultra.html": ["xiaomi 14 ultra", "xiaomi ultra"],
+            "products/oppofindx5pro.html": ["oppo find x5 pro", "find x5 pro"],
+            "products/xiaomipocox6pro.html": ["xiaomi poco x6 pro", "poco x6 pro"],
+            "products/samsungzfold.html": ["samsung zfold", "fold", "zfold"],
+            "products/samsungzflip6.html": ["samsung zflip 6", "zflip 6"],
+            "products/xiaomiredminote13.html": ["xiaomi redmi note 13", "redmi note 13"],
+            "products/oppoa79.html":  ["oppo a79 5g", "a79", "79"],
+            "products/opporeno125g.html":  ["oppo reno 12 5g", "reno 12", "reno"],
+            "products/samsunggalaxys23ultra.html": ["samsung galaxy s23 ultra", "s23 ultra", "s23"],
+            "products/samsunggalaxys24ultra.html": ["samsung galaxy s24 ultra", "s24 ultra", "s24"],
+            "products/xiaomiredmi14c.html": ["14c", "redmi 14", "14", "xiaomi redmi 14"],
+            "products/xiaomiredmi11.html": ["redmi11", "xiaomi redmi 11", "11"]
+        }
+        let flag = false
+    console.log(query)
+    for (const [productLink, keywords] of Object.entries(keyWord)) {
+        if (keywords.includes(query)) {
+            console.log(productLink) 
+            window.location.href = productLink;
+            flag = true
+        }
+    }
+    if(!flag){
+        alert("Không tìm thấy sản phẩm phù hợp.");
+    }
+  }
+});
+
+function truncateText(text, limit) {
+    if (text.length > limit) {
+        return text.substring(0, limit) + '...';
+    }
+    return text;
+}
+
+
+const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+if (loggedInUser) {
+    // Thay đổi nội dung của nút đăng nhập thành tên người dùng
+    const loginButton = document.getElementById('loginButton');
+    if (loginButton) {
+        // Ẩn nút đăng nhập
+        loginButton.style.display = 'none';
+
+        // Tạo phần tử hiển thị lời chào
+        const welcomeMessage = document.createElement('span');
+        welcomeMessage.innerHTML = `Xin chào ${truncateText(loggedInUser.fullname, 5)}`;
+        welcomeMessage.style.marginRight = '10px';
+        welcomeMessage.style.color = 'White'
+        welcomeMessage.style.overflow = "ellipsis"
+        welcomeMessage.style.backgroundColor = "transparent"
+        loginButton.parentNode.appendChild(welcomeMessage);
+
+        // Tạo nút đăng xuất và thêm vào
+        const logoutButton = document.createElement('button');
+        logoutButton.innerText = 'Đăng xuất';
+        logoutButton.classList.add('btn-logout'); // Thêm lớp CSS nếu cần
+        logoutButton.onclick = function() {
+            localStorage.removeItem('loggedInUser'); // Xóa thông tin đăng nhập
+            window.location.reload(); // Tải lại trang
+        };
+        loginButton.parentNode.appendChild(logoutButton);
+    }
+  }
+
+function closePopup(){
+    document.getElementsByClassName('popup-advertisement')[0].style.display = "none"
+
 }

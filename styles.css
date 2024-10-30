@@ -90,6 +90,34 @@ header li{
     left: 25px;
 }
 
+/* -----------------------------POP UP------------------------- */
+.popup-advertisement
+{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    align-items: center;
+    z-index: 10;
+    background-color: #333333e0;
+}
+.popup-advertisement img{
+    position: fixed;
+    display: grid;
+    width: 60%;
+    height: 60%;
+    justify-content: space-around;
+    top: 20%;
+    left: 20%;
+}
+.fa-circle-xmark::before{
+    font-size: 30px;
+    position: absolute;
+    top: 20%;
+    right: 21%;
+    background-color: transparent;
+}
 
 /*---------------------------hot sale--------------------------*/
 .hot-sale-container{
@@ -139,6 +167,7 @@ header li{
     position: relative;
     overflow: hidden;
     margin: 0 auto;
+    z-index: 1;
 }
 .hot-sale-product-container
 {
@@ -149,6 +178,7 @@ header li{
     background-color: white;
     position: absolute;
     transition: all 0.3s ease-in;
+    z-index: 1;
 }
 .product-infor{
     width: 100%;

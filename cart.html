@@ -268,6 +268,7 @@
         }
         //
         if(item.qty <= 0){
+            window.location.reload()
             itemList.splice(button.id, 1)
             for (let i = button.id; i < itemList.length; i++) {
                 itemList[i].id = i; // Update the index
