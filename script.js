@@ -112,7 +112,7 @@ let hotSaleData = [
     {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
     {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
     {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "iphone16promax", name: "Iphone 16 Promax", price: 40000000, percent: 19},
 ]
 let hotSaleItems = document.getElementsByClassName('hot-sale-items')[0]
 let hotSaleProductStr = ''
