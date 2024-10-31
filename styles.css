@@ -7,28 +7,27 @@
     border: 0;
 }
 body{
-    min-height: 100%;
+    width: 100%;
 }
 a{
     text-decoration: none;
     color: #444;
 }
 /*--------------------------------Header----------------------------------------*/
+/* --------BANNER */
 header li{
     display: inline-block;
     font-size: 24px;
 }
 .headerBanner{
-    height: 50px;
+    height: auto;
     text-align: center;
 }
 .headerBanner li
 {
-    height: 50px;
-    text-align: center;
-    width: calc(27% - 60px);
-    padding: 0 30px;
-    line-height: 50px;
+    display: inline-block;
+    font-size: auto;
+    padding: 5px 15px
 }
 .headerBanner img{
     width: 30px;
@@ -36,15 +35,17 @@ header li{
     position: relative;
     top: 10px;
 }
-
+/* -----------------NAVIGATION BAR */
+.nav-container{
+    width: 100vw;
+}
 .nav-container ul{
-    background-color: #3498db;
+    background-color: #ffd1d6;
     display: flex;
-    height: 60px;
-    width: 100%;
-    text-align: center;
+    flex-wrap: wrap;
+    height: auto;
     justify-content: space-around;
-    padding: 0 5%;
+    padding: 5px 5%;
 }
 .nav-container img{
     height: 60px;
@@ -52,8 +53,8 @@ header li{
 .nav-container li{
     text-align: center;
     display: inline-block;
-    line-height: 60px;
-    height: 100%;
+    height: fit-content;
+    margin: auto 0;
 }
 .nav-container i
 {
@@ -65,10 +66,10 @@ header li{
 .nav-container ul li button:hover{
     background-color: rgb(149, 149, 149);
 }
-.nav-container ul li button{
+.nav-container button{
     padding: 8px 20px;
     border-radius: 8px;
-    background-color: black;
+    background-color: #0e4374c5;
     color: #fff;
     margin: auto 0;
     font-size: 16px;
@@ -115,7 +116,7 @@ header li{
 .fa-circle-xmark::before{
     font-size: 30px;
     position: absolute;
-    top: 20%;
+    top: 19.5%;
     right: calc(20.8%);
     background-color: transparent;
 }
@@ -144,7 +145,7 @@ ul#brandMenu li {
     width: 80%;
     margin: 10px auto;
     border-radius: 8px;
-    background-image: linear-gradient(to top,#3498db, #ffffff);
+    background-image: linear-gradient(to top,#ffd1d6, #ffffff);
     border: solid 3px #ddd;
 }
 .hot-sale-container h1{
@@ -302,8 +303,8 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    background-color:#3498db;
-    color: #fff;
+    background-color:#ffd1d6;
+    color: #0e4274;
     padding: 20px;
     display: flex;
     justify-content: space-around;
@@ -370,14 +371,14 @@ footer {
 
 /* Product Name, Price, and Rating */
 .product-name {
-    font-size: 16px;
+    font-size: auto;
     font-weight: 500;
     margin: 8px 0;
     height: 40px;
 }
 
 .product-price {
-    font-size: 18px;
+    font-size: auto;
     color: #ff5050;
     margin-bottom: 6px;
     font-weight: 600;

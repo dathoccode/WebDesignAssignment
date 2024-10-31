@@ -1,3 +1,154 @@
+//----------------------------------NAVIGATION BAR----------------------------
+
+//-------------SEARCH
+document.getElementById("searchInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        let query = this.value.trim().toLowerCase();
+        const keyWord = {
+            "products/oppoa3.html": ["oppo a3", "oppo a3 5g", "oppo a3 pro"],
+            "products/oppoa18.html": ["oppo a18", "oppo a18 5g"],
+            "products/samsunggalaxya35.html": ["samsung galaxy a35", "samsung a35", "a35", "35"],
+            "products/xiaomi14ultra.html": ["xiaomi 14 ultra", "xiaomi ultra"],
+            "products/oppofindx5pro.html": ["oppo find x5 pro", "find x5 pro"],
+            "products/xiaomipocox6pro.html": ["xiaomi poco x6 pro", "poco x6 pro"],
+            "products/samsungzfold.html": ["samsung zfold", "fold", "zfold"],
+            "products/samsungzflip6.html": ["samsung zflip 6", "zflip 6"],
+            "products/xiaomiredminote13.html": ["xiaomi redmi note 13", "redmi note 13"],
+            "products/oppoa79.html":  ["oppo a79 5g", "a79", "79"],
+            "products/opporeno125g.html":  ["oppo reno 12 5g", "reno 12", "reno"],
+            "products/samsunggalaxys23ultra.html": ["samsung galaxy s23 ultra", "s23 ultra", "s23"],
+            "products/samsunggalaxys24ultra.html": ["samsung galaxy s24 ultra", "s24 ultra", "s24"],
+            "products/xiaomiredmi14c.html": ["14c", "redmi 14", "14", "xiaomi redmi 14"],
+            "products/xiaomiredmi11.html": ["redmi11", "xiaomi redmi 11", "11"]
+        }
+        let flag = false
+    console.log(query)
+    for (const [productLink, keywords] of Object.entries(keyWord)) {
+        if (keywords.includes(query)) {
+            console.log(productLink) 
+            window.location.href = productLink;
+            flag = true
+        }
+    }
+    if(!flag){
+        alert("Không tìm thấy sản phẩm phù hợp.");
+    }
+  }
+});
+
+function truncateText(text, limit) {
+    if (text.length > limit) {
+        return text.substring(0, limit) + '...';
+    }
+    return text;
+}
+
+//-------------LOG IN/LOG OUT HANDLING
+const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+if (loggedInUser) {
+    // Thay đổi nội dung của nút đăng nhập thành tên người dùng
+    const loginButton = document.getElementById('loginButton');
+    if (loginButton) {
+        // Ẩn nút đăng nhập
+        loginButton.style.display = 'none';
+
+        // Tạo phần tử hiển thị lời chào
+        const welcomeMessage = document.createElement('span');
+        welcomeMessage.innerHTML = `Xin chào ${truncateText(loggedInUser.fullname, 5)}`;
+        welcomeMessage.style.marginRight = '10px';
+        welcomeMessage.style.color = 'White'
+        welcomeMessage.style.overflow = "ellipsis"
+        welcomeMessage.style.backgroundColor = "transparent"
+        loginButton.parentNode.appendChild(welcomeMessage);
+
+        // Tạo nút đăng xuất và thêm vào
+        const logoutButton = document.createElement('button');
+        logoutButton.innerText = 'Đăng xuất';
+        logoutButton.classList.add('btn-logout'); // Thêm lớp CSS nếu cần
+        logoutButton.onclick = function() {
+            localStorage.removeItem('loggedInUser'); // Xóa thông tin đăng nhập
+            window.location.reload(); // Tải lại trang
+        };
+        loginButton.parentNode.appendChild(logoutButton);
+    }
+  }
+
+function closePopup(){
+    document.getElementsByClassName('popup-advertisement')[0].style.display = "none"
+
+}
+
+
+// ---------------Danh mục---------------
+function toggleMenu() {
+    const menu = document.getElementById('brandMenu');
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+  
+    function filterPhones(brand) {
+        const allProducts = document.querySelectorAll('.featured-grid a');
+    
+        allProducts.forEach(product => {
+        if (brand === 'all') {
+            product.style.display = 'block'; // Hiển thị tất cả sản phẩm khi chọn "Tất cả"
+        } else {
+            product.style.display = product.classList.contains(brand) ? 'block' : 'none'; // Chỉ hiển thị sản phẩm của hãng được chọn
+        }
+        });
+    }
+
+
+//---------------------------------------Hot sale product generator---------------------------------------
+//enter product data
+let hotSaleData = [
+    {id: "oppoa3", name: "Oppo A3", price: 2990000, percent: 19},
+    {id: "oppoa79", name: "Oppo A79", price: 4999000, percent: 20},
+    {id: "opporeno125g", name: "Oppo A3", price: 3200000, percent: 19},
+    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, percent: 19},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+]
+let hotSaleItems = document.getElementsByClassName('hot-sale-items')[0]
+let hotSaleProductStr = ''
+hotSaleData.forEach((item, index) => {
+    hotSaleProductStr += `<div class="hot-sale-product-container">
+              <a href="products/${item.id}.html">
+                <div class="product-infor">
+                  <div class="hot-sale-tag">${item.percent}%</div>
+                  <img src="./image/${item.id}/${item.id}main.png" alt="" />
+                  <li class="product-name">${item.name}</li>
+                  <li>
+                    <span class="hot-sale-product-new-price">${formatPrice(item.price)}</span>
+                    <span class="hot-sale-product-old-price">${formatPrice(roundToThousand(item.price * 100 / (100 - item.percent)))}</span>
+
+                  </li>
+                  <li>
+                    <span>Đánh giá</span>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </li>
+                </div>
+              </a>
+            </div>`
+})
+hotSaleItems.innerHTML = hotSaleProductStr
+
+function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Định dạng số thành xxx.xxx
+}
+function roundToThousand(num) {
+    return Math.round(num / 10000) * 10000;
+}
+
 //--------------------------------------SLIDER----------------------------
 const btnLeft = document.querySelector('.fa-chevron-left');
 const btnRight = document.querySelector('.fa-chevron-right');
@@ -46,7 +197,7 @@ function hotSaleAuto() {
 
 setInterval(hotSaleAuto, 5000);
 
-//------------------------------------count-down-timer-----------------------------------
+//---------------------------count-down-timer---------------------------
 function countDownTimer(){
     // Đặt thời gian đếm ngược (ví dụ: 1 giờ, 30 phút, 0 giây)
     let countdownTime = 1 * 60 * 60 + 30 * 60; // 1 giờ và 30 phút
@@ -81,104 +232,65 @@ if(localStorage.getItem("cartArr") == []){
     localStorage.setItem("cartArr", JSON.stringify(cartArr))
 }
 
-
-
-/// thanh tim kiếm
-
-document.getElementById("searchInput").addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        let query = this.value.trim().toLowerCase();
-        const keyWord = {
-            "products/oppoa3.html": ["oppo a3", "oppo a3 5g", "oppo a3 pro"],
-            "products/oppoa18.html": ["oppo a18", "oppo a18 5g"],
-            "products/samsunggalaxya35.html": ["samsung galaxy a35", "samsung a35", "a35", "35"],
-            "products/xiaomi14ultra.html": ["xiaomi 14 ultra", "xiaomi ultra"],
-            "products/oppofindx5pro.html": ["oppo find x5 pro", "find x5 pro"],
-            "products/xiaomipocox6pro.html": ["xiaomi poco x6 pro", "poco x6 pro"],
-            "products/samsungzfold.html": ["samsung zfold", "fold", "zfold"],
-            "products/samsungzflip6.html": ["samsung zflip 6", "zflip 6"],
-            "products/xiaomiredminote13.html": ["xiaomi redmi note 13", "redmi note 13"],
-            "products/oppoa79.html":  ["oppo a79 5g", "a79", "79"],
-            "products/opporeno125g.html":  ["oppo reno 12 5g", "reno 12", "reno"],
-            "products/samsunggalaxys23ultra.html": ["samsung galaxy s23 ultra", "s23 ultra", "s23"],
-            "products/samsunggalaxys24ultra.html": ["samsung galaxy s24 ultra", "s24 ultra", "s24"],
-            "products/xiaomiredmi14c.html": ["14c", "redmi 14", "14", "xiaomi redmi 14"],
-            "products/xiaomiredmi11.html": ["redmi11", "xiaomi redmi 11", "11"]
-        }
-        let flag = false
-    console.log(query)
-    for (const [productLink, keywords] of Object.entries(keyWord)) {
-        if (keywords.includes(query)) {
-            console.log(productLink) 
-            window.location.href = productLink;
-            flag = true
-        }
-    }
-    if(!flag){
-        alert("Không tìm thấy sản phẩm phù hợp.");
-    }
-  }
-});
-
-function truncateText(text, limit) {
-    if (text.length > limit) {
-        return text.substring(0, limit) + '...';
-    }
-    return text;
-}
-
-
-const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-if (loggedInUser) {
-    // Thay đổi nội dung của nút đăng nhập thành tên người dùng
-    const loginButton = document.getElementById('loginButton');
-    if (loginButton) {
-        // Ẩn nút đăng nhập
-        loginButton.style.display = 'none';
-
-        // Tạo phần tử hiển thị lời chào
-        const welcomeMessage = document.createElement('span');
-        welcomeMessage.innerHTML = `Xin chào ${truncateText(loggedInUser.fullname, 5)}`;
-        welcomeMessage.style.marginRight = '10px';
-        welcomeMessage.style.color = 'White'
-        welcomeMessage.style.overflow = "ellipsis"
-        welcomeMessage.style.backgroundColor = "transparent"
-        loginButton.parentNode.appendChild(welcomeMessage);
-
-        // Tạo nút đăng xuất và thêm vào
-        const logoutButton = document.createElement('button');
-        logoutButton.innerText = 'Đăng xuất';
-        logoutButton.classList.add('btn-logout'); // Thêm lớp CSS nếu cần
-        logoutButton.onclick = function() {
-            localStorage.removeItem('loggedInUser'); // Xóa thông tin đăng nhập
-            window.location.reload(); // Tải lại trang
-        };
-        loginButton.parentNode.appendChild(logoutButton);
-    }
-  }
-
-function closePopup(){
-    document.getElementsByClassName('popup-advertisement')[0].style.display = "none"
-
-}
-// ---------------Danh mục---------------
-function toggleMenu() {
-    const menu = document.getElementById('brandMenu');
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-  }
-  
-  function filterPhones(brand) {
-    const allProducts = document.querySelectorAll('.featured-grid a');
-  
-    allProducts.forEach(product => {
-      if (brand === 'all') {
-        product.style.display = 'block'; // Hiển thị tất cả sản phẩm khi chọn "Tất cả"
-      } else {
-        product.style.display = product.classList.contains(brand) ? 'block' : 'none'; // Chỉ hiển thị sản phẩm của hãng được chọn
-      }
-    });
-  }
-  
-  
+//--------------------------FETURED PRODUCTS GENERATOR------------------------
+let featuredItems = document.getElementsByClassName('featured-grid')[0]
+let featuredProductStr = ''
+let productData = [
+    {id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
+    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
+    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
+    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
+    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
+    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
+    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},{id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
+    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
+    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
+    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},{id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
+    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
+    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
+    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+]
+productData.forEach((item) => {
+    featuredProductStr += `
+        <a href="products/${item.id}.html" class="oppoPhones">
+          <div class="product-card">
+            <img src="./image/${item.id}/${item.id}main.png" alt="Tên sản phẩm" />
+            <p class="product-name">${item.name}</p>
+            <p class="product-price">${formatPrice(item.price)}</p>
+            <li class="product-rating">
+              <span>Đánh giá</span>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </li>
+          </div>
+        </a>`
+})
+featuredItems.innerHTML = featuredProductStr
