@@ -163,3 +163,22 @@ function closePopup(){
     document.getElementsByClassName('popup-advertisement')[0].style.display = "none"
 
 }
+// ---------------Danh mục---------------
+function toggleMenu() {
+    const menu = document.getElementById('brandMenu');
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  }
+  
+  function filterPhones(brand) {
+    const allProducts = document.querySelectorAll('.featured-grid a');
+  
+    allProducts.forEach(product => {
+      if (brand === 'all') {
+        product.style.display = 'block'; // Hiển thị tất cả sản phẩm khi chọn "Tất cả"
+      } else {
+        product.style.display = product.classList.contains(brand) ? 'block' : 'none'; // Chỉ hiển thị sản phẩm của hãng được chọn
+      }
+    });
+  }
+  
+  

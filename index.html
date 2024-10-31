@@ -34,10 +34,17 @@
         <ul>
           <li><img src="./image/icons/brand_logo.png" class="brand-logo" /></li>
           <li>
-            <button>
-              <i class="fa-solid fa-list"></i><a href="">Danh mục</a>
+            <button onclick="toggleMenu()">
+              <i class="fa-solid fa-list"></i><a href="#">Danh mục</a>
             </button>
+            <ul id="brandMenu" style="display: none;">
+              <li><a href="#" onclick="filterPhones('xiaomiPhones')">Xiaomi</a></li>
+              <li><a href="#" onclick="filterPhones('samsungPhones')">Samsung</a></li>
+              <li><a href="#" onclick="filterPhones('oppoPhones')">Oppo</a></li>
+              <li><a href="#" onclick="filterPhones('all')">Tất cả</a></li>
+            </ul>
           </li>
+
           <li class="search-bar">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input
@@ -282,7 +289,7 @@
     <section class="featured-container">
       <h1>ĐIỆN THOẠI NỔI BẬT</h1>
       <div class="featured-grid">
-        <a href="products/oppoa18.html">
+        <a href="products/oppoa18.html" class="oppoPhones">
           <div class="product-card">
             <img src="./image/oppoa18/oppoa18main.png" alt="Tên sản phẩm" />
             <p class="product-name">Oppo A18</p>
@@ -297,7 +304,7 @@
             </li>
           </div>
         </a>
-        <a href="products/oppoa3.html">
+        <a href="products/oppoa3.html" class="oppoPhones">
           <div class="product-card">
             <img src="./image/oppoa3/oppoa3main.png" alt="Tên sản phẩm" />
             <p class="product-name">Oppo A3</p>
@@ -312,7 +319,7 @@
             </li>
           </div>
         </a>
-        <a href="products/oppoa79.html">
+        <a href="products/oppoa79.html" class="oppoPhones">
           <div class="product-card">
             <img src="./image/oppoa79/oppoa79main.png" alt="Tên sản phẩm" />
             <p class="product-name">Oppo A79 5G</p>
@@ -327,7 +334,7 @@
             </li>
           </div>
         </a>
-        <a href="products/oppofindx5pro.html">
+        <a href="products/oppofindx5pro.html" class="oppoPhones">
           <div class="product-card">
             <img
               src="./image/oppofindx5pro/oppofindx5promain.png"
@@ -345,7 +352,7 @@
             </li>
           </div>
         </a>
-        <a href="products/opporeno125g.html">
+        <a href="products/opporeno125g.html" class="oppoPhones" >
           <div class="product-card">
             <img
               src="./image/opporeno125g/opporeno125gmain.png"
@@ -363,7 +370,7 @@
             </li>
           </div>
         </a>
-        <a href="products/samsunggalaxya35.html">
+        <a href="products/samsunggalaxya35.html" class="samsungPhones">
           <div class="product-card">
             <img
               src="./image/samsunggalaxya35/samsunggalaxya35main.png"
@@ -382,7 +389,7 @@
           </div>
         </a>
 
-        <a href="products/samsunggalaxys23ultra.html">
+        <a href="products/samsunggalaxys23ultra.html" class="samsungPhones">
           <div class="product-card">
             <img
               src="./image/samsunggalaxys23ultra/samsunggalaxys23ultramain.png"
@@ -400,7 +407,7 @@
             </li>
           </div>
         </a>
-        <a href="products/samsunggalaxys24ultra.html">
+        <a href="products/samsunggalaxys24ultra.html" class="samsungPhones">
           <div class="product-card">
             <img
               src="./image/samsunggalaxys24ultra/samsunggalaxys24ultramain.png"
@@ -418,7 +425,7 @@
             </li>
           </div>
         </a>
-        <a href="products/samsunggalaxyzflip6.html">
+        <a href="products/samsunggalaxyzflip6.html" class="samsungPhones">
           <div class="product-card">
             <img
               src="./image/samsunggalaxyzflip6/samsunggalaxyzflip6main.png"
@@ -436,7 +443,7 @@
             </li>
           </div>
         </a>
-        <a href="products/samsunggalaxyzfold.html">
+        <a href="products/samsunggalaxyzfold.html" class="samsungPhones">
           <div class="product-card">
             <img
               src="./image/samsunggalaxyzfold/samsunggalaxyzfoldmain.png"
@@ -454,7 +461,7 @@
             </li>
           </div>
         </a>
-        <a href="products/xiaomi14ultra.html">
+        <a href="products/xiaomi14ultra.html" class="xiaomiPhones">
           <div class="product-card">
             <img
               src="./image/xiaomi14ultra/xiaomi14ultramain.png"
@@ -472,7 +479,7 @@
             </li>
           </div>
         </a>
-        <a href="products/xiaomimi11.html">
+        <a href="products/xiaomimi11.html" class="xiaomiPhones">
           <div class="product-card">
             <img
               src="./image/xiaomimi11/xiaomimi11main.png"
@@ -490,7 +497,7 @@
             </li>
           </div>
         </a>
-        <a href="products/xiaomipocox6pro5g.html">
+        <a href="products/xiaomipocox6pro5g.html" class="xiaomiPhones">
           <div class="product-card">
             <img
               src="./image/xiaomipocox6pro5g/xiaomipocox6pro5gmain.png"
@@ -508,7 +515,7 @@
             </li>
           </div>
         </a>
-        <a href="products/xiaomiredmi14c.html">
+        <a href="products/xiaomiredmi14c.html" class="xiaomiPhones">
           <div class="product-card">
             <img
               src="./image/xiaomiredmi14c/xiaomiredmi14cmain.png"
@@ -526,7 +533,7 @@
             </li>
           </div>
         </a>
-        <a href="products/xiaomiredminote13.html">
+        <a href="products/xiaomiredminote13.html" class="xiaomiPhones">
           <div class="product-card">
             <img
               src="./image/xiaomiredminote13/xiaomiredminote13main.png"
@@ -589,13 +596,5 @@
   </body>
 
   <script src="./script.js"></script>
-  <script>
-    
 
-
-
-
-
-  
-  </script>
 </html>

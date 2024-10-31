@@ -38,7 +38,7 @@ header li{
 }
 
 .nav-container ul{
-    background-color: #225451;
+    background-color: #3498db;
     display: flex;
     height: 60px;
     width: 100%;
@@ -110,13 +110,33 @@ header li{
     justify-content: space-around;
     top: 20%;
     left: 20%;
+    border-radius: 12px;
 }
 .fa-circle-xmark::before{
     font-size: 30px;
     position: absolute;
     top: 20%;
-    right: 21%;
+    right: calc(20.8%);
     background-color: transparent;
+}
+/*  phan danh muc */
+ul#brandMenu {
+    list-style-type: none;
+    background-color: #333333b1;
+    
+    padding: 0;
+    margin: 0px 0;
+    position: absolute;
+    z-index: 2;
+    width: 130px;
+    height: auto;
+    display:block;
+    border-radius: 0px 0px 20px 20px;
+    
+}
+ul#brandMenu li {
+  padding: 0px 0; 
+  margin: 0 15px;    
 }
 
 /*---------------------------hot sale--------------------------*/
@@ -124,7 +144,7 @@ header li{
     width: 80%;
     margin: 10px auto;
     border-radius: 8px;
-    background-image: linear-gradient(to top,#225451, #ffffff);
+    background-image: linear-gradient(to top,#3498db, #ffffff);
     border: solid 3px #ddd;
 }
 .hot-sale-container h1{
@@ -282,7 +302,7 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    background-color:#225451;
+    background-color:#3498db;
     color: #fff;
     padding: 20px;
     display: flex;
