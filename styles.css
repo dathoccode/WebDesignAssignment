@@ -1,3 +1,43 @@
+@media only screen and (max-width: 899px) {
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+}
+  
+  @media only screen and (min-width: 900px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+
+
+
+
+
+
+
+
 /*general styles*/
 *{
     margin: 0;
@@ -7,26 +47,27 @@
     border: 0;
 }
 body{
-    min-height: 100%;
+    width: 100%;
 }
-
-
+a{
+    text-decoration: none;
+    color: #444;
+}
 /*--------------------------------Header----------------------------------------*/
+/* --------BANNER */
 header li{
     display: inline-block;
     font-size: 24px;
 }
 .headerBanner{
-    height: 50px;
+    height: auto;
     text-align: center;
 }
 .headerBanner li
 {
-    height: 50px;
-    text-align: center;
-    width: calc(27% - 60px);
-    padding: 0 30px;
-    line-height: 50px;
+    display: inline-block;
+    font-size: auto;
+    padding: 5px 15px
 }
 .headerBanner img{
     width: 30px;
@@ -34,15 +75,17 @@ header li{
     position: relative;
     top: 10px;
 }
-
-.nav-container ul{
-    background-color: #225451;
-    display: flex;
-    height: 60px;
+/* -----------------NAVIGATION BAR */
+.nav-container{
     width: 100%;
-    text-align: center;
+}
+.nav-container ul{
+    background-color: #ffd1d6;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
     justify-content: space-around;
-    padding: 0 5%;
+    padding: 5px 5%;
 }
 .nav-container img{
     height: 60px;
@@ -50,8 +93,9 @@ header li{
 .nav-container li{
     text-align: center;
     display: inline-block;
-    line-height: 60px;
-    height: 100%;
+    height: fit-content;
+    margin: auto 0;
+    
 }
 .nav-container i
 {
@@ -63,13 +107,14 @@ header li{
 .nav-container ul li button:hover{
     background-color: rgb(149, 149, 149);
 }
-.nav-container ul li button{
+.nav-container button{
     padding: 8px 20px;
     border-radius: 8px;
-    background-color: black;
+    background-color: #0e4374c5;
     color: #fff;
     margin: auto 0;
-    font-size: 16px;
+    font-size: auto;
+    cursor: pointer;
 }
 .nav-container li a{
     text-decoration: none;
@@ -87,13 +132,63 @@ header li{
     left: 25px;
 }
 
+/* -----------------------------POP UP------------------------- */
+.popup-advertisement
+{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    align-items: center;
+    z-index: 10;
+    background-color: #333333e0;
+}
+.popup-advertisement img{
+    position: fixed;
+    display: grid;
+    width: 60%;
+    height: 60%;
+    justify-content: space-around;
+    top: 20%;
+    left: 20%;
+    border-radius: 12px;
+}
+.fa-circle-xmark::before{
+    font-size: 30px;
+    position: absolute;
+    top: 20%;
+    right: calc(20.8%);
+    background-color: transparent;
+    cursor: pointer;
+}
+/*  phan danh muc */
+ul#brandMenu {
+    list-style-type: none;
+    background-color: #333333b1;
+    
+    padding: 0;
+    margin: 0px 0;
+    position: absolute;
+    z-index: 2;
+    width: 130px;
+    height: auto;
+    display:block;
+    border-radius: 0px 0px 20px 20px;
+    
+}
+ul#brandMenu li {
+  padding: 0px 0; 
+  margin: 0 15px;    
+}
 
 /*---------------------------hot sale--------------------------*/
 .hot-sale-container{
     width: 80%;
     margin: 10px auto;
-    background-color: #74c3bf;
     border-radius: 8px;
+    background-image: linear-gradient(to top,#ffd1d6, #ffffff);
+    border: solid 3px #ddd;
 }
 .hot-sale-container h1{
     text-align: center;
@@ -104,10 +199,10 @@ header li{
     margin: 0 5px;
 }
 .hot-sale-content{
-    height: 280px;
+    height: 330px;
     position: relative;
 }
-.hot-sale-content i{
+.hot-sale-btn i{
     position: absolute;
     height: 50px;
     width: 30px;
@@ -119,7 +214,7 @@ header li{
     opacity: 0;
     border-radius: 6px;
 }
-.hot-sale-content:hover i{
+.hot-sale-content:hover .hot-sale-btn i{
     opacity: 1;
     transition: all 0.3s ease;
 }
@@ -135,6 +230,7 @@ header li{
     position: relative;
     overflow: hidden;
     margin: 0 auto;
+    z-index: 1;
 }
 .hot-sale-product-container
 {
@@ -145,11 +241,29 @@ header li{
     background-color: white;
     position: absolute;
     transition: all 0.3s ease-in;
+    z-index: 1;
 }
 .product-infor{
     width: 100%;
     padding: 0 10px;
     position: relative;
+}
+.product-infor li:nth-child(1){
+    line-height: 30px;
+}
+
+.product-infor li:nth-of-type(2){
+    text-align: left;
+    margin: 5px 0;
+    text-overflow: clip;
+}
+.product-infor li:last-child{
+    font-size: 14px;
+    text-align: left;
+}
+.product-infor li:last-child i{
+    height: 100%;
+    color: #FFD700;
 }
 .product-infor img
 {
@@ -157,14 +271,28 @@ header li{
     max-height: 100%;
 }
 
+/*----------------------------- Count-down-timer -------------------------------- */
+.count-down-timer{
+    text-align: center;
+    line-height: 30px;
+    font-size: 24px;
+}
 
-
+.count-down-timer div{
+    display: inline-block;
+    background-color: #FFD700;
+    margin: 0 10px;
+    border-radius: 50%;
+    padding: 10px;
+    color: #ff5050;
+    justify-content: center;
+    align-items: center; 
+}
 
 /*----------------------------hot sale product--------------------------*/
 
 .hot-sale-container{
     list-style-type: none;
-
 }
 .product-container{
     width: calc(20% - 24px);
@@ -181,12 +309,15 @@ header li{
     display: inline;
     float: left;
 }
-.product-infor li:nth-child(1){    /*product name*/
+.product-infor li:nth-of-type(1){    /*product name*/
     margin: 15px auto;
+    text-align: center;
 }
-.product-old-price{
+.hot-sale-product-old-price{
     text-decoration: line-through;
     margin-left: 10px;
+    font-size: 12px;
+    color: #333;
 }
 .hot-sale-tag{
     background: url(./image/icons/sale-tag.png);
@@ -197,7 +328,62 @@ header li{
     position: absolute;
     left: -5px;
     top: -3px;
+    text-align: center;
+    color: white
 }
+.hot-sale-product-new-price
+{
+    color: red;
+    font-weight: bold;
+}
+
+
+/* up phan tin tuc */
+.forming img {
+    width: 100%; /* Makes images responsive */
+    cursor: pointer;
+}
+.news{
+    clear: both;
+    display: flex;
+    margin: 0 170px;
+    padding: 0 0px;
+    margin-bottom: 30px;
+    gap: 20px; 
+}
+.content .forcontent{
+    float: left;
+}
+.content .forming{
+    width: auto;  
+}
+.item {
+    margin-right: 20px;
+    border-radius: 10px; 
+    border: 1px solid #ddd; /* Optional: light border for a cleaner look */
+    overflow: hidden;
+}
+.item:last-child {
+    margin-right: 0;
+}
+.forcontent p {
+    text-decoration: none; /* Ensures text is not underlined initially */
+    transition: text-decoration 0.3s ease; /* Smooth transition for the effect */
+    padding: 0 10px;
+}
+.forcontent p:hover {
+    text-decoration: underline; /* Adds underline on hover */
+    cursor: pointer;
+}
+.item {
+    transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+}
+
+.item:hover {
+    transform: scale(1.08); /* Scales the entire item box on hover */
+}
+
+
 
 
 
@@ -207,20 +393,93 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    background-color:#225451;
-    color: #fff;
+    background-color:#ffd1d6;
+    color: #0e4274;
     padding: 20px;
     display: flex;
     justify-content: space-around;
     text-align: left;
+}
+.footer-section
+{
+    width: 20%;
+    margin: 5px auto;
 }
 .collumns{
     display: flex; /* Sử dụng Flexbox */
     flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
 }
 .footer-section ul li {
-    list-style-type: none;
+    list-style: none;
     flex: 1 0 50%; /* Mỗi phần tử chiếm 50% chiều rộng */
     margin: 8px 0 0; /* Thêm khoảng cách giữa các phần tử */
     padding-left: 10px;
+}
+/*  list item */
+/* General Container for Featured Section */
+.featured-container {
+    max-width: 1200px; /* Ensures alignment with the "Hot Sale" section */
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.featured-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Sets 5 items per row */
+    gap: 20px; /* Space between items */
+}
+
+/* Individual Product Card Styling */
+.product-card {
+    padding: 10px;
+    border: 3px solid #ddd;
+    border-radius: 16px;
+    background-color: white;
+    text-align: center;
+}
+
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Product Image */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Product Name, Price, and Rating */
+.product-name {
+    font-size: auto;
+    font-weight: 500;
+    margin: 8px 0;
+    height: 40px;
+}
+
+.product-price {
+    font-size: auto;
+    color: #ff5050;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.product-rating{
+    list-style: none;
+    color: yellow;
+    font-size:smaller;
+}
+
+.product-rating span{
+    color: #333;
 }

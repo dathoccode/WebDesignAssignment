@@ -4,19 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="login_styles.css">
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          
+          .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+          }
+          
+          .login-container img {
+            max-width: 160px;
+          }
+          
+          .login-container h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            text-align: center;
+          }
+          
+          .login-container p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+          }
+          
+          .login-container label {
+            display: block;
+            font-size: 17px;
+            text-align: left;
+            margin-bottom: 5px;
+          }
+          
+          .login-container input[type="text"],
+          .login-container input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+          }
+          
+          .login-container a {
+            color: #007bff;
+            text-decoration: none;
+          }
+          
+          .login-container a:hover {
+            text-decoration: underline;
+          }
+          
+          .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+          }
+          
+          .remember-me input[type="checkbox"] {
+            margin-right: 8px;
+            margin-bottom: 5px;
+          }
+          
+          .btn-login {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 15px;
+          }
+          
+          .btn-login:hover {
+            background-color: #0056b3;
+          }
+          
+          .register-link {
+            border-top: 1px solid gray;
+            font-size: 15px;
+            color: #666;
+            padding-top: 20px;
+            margin-top: 15px;
+            text-align: center;
+          }
+          
+          .footer {
+            background-color: #f9f9f9;
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            /* margin-top: 15px; */
+            border-top: 1px solid #ddd;
+            display: block;
+            position: absolute; 
+            bottom: 0; 
+            width: 99%; 
+        }
+          
+          .footer-links a {
+            color: #007bff;
+            text-decoration: none;
+            /* margin: 0 5px; */
+          }
+          
+          .footer-links a:hover {
+            text-decoration: underline;
+          }
+          
+          .footer-links {
+            margin-bottom: 3px;
+            margin-top: 5px;
+            padding-top: 10px;
+          }
+          
+          .footer p {
+            margin-top: 9px;
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 15px;
+          }
+    </style>
 </head>
 <body>
 
     <main class="login-container">
         <div class="logo">
-            <img src="./image/brand_logo.png" alt="automobilelogo">
+            <a href="index.html"><img src="./image/icons/brand_logo.png" alt="automobilelogo"></a>
         </div>
         <h1>Đăng Nhập</h1>
         <p>Đăng nhập một tài khoản sử dụng cho tất cả các dịch vụ</p>
         <form id="loginForm" onsubmit="return loginUser(event)">
-            <label for="username">Tên đăng nhập hoặc email</label>
-            <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập hoặc email" required>
+            <label for="username">Email</label>
+            <input type="text" id="username" name="username" placeholder="Nhập Email" required>
 
             <label for="password">Mật khẩu</label>
             <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
@@ -41,23 +178,31 @@
 
     <script>
         function loginUser(event) {
-            event.preventDefault();
+          event.preventDefault();
 
-            const enteredEmail = document.getElementById('username').value;
-            const enteredPassword = document.getElementById('password').value;
+          const enteredEmail = document.getElementById('username').value;
+          const enteredPassword = document.getElementById('password').value;
 
-            // Retrieve stored credentials from register.html
-            const registeredEmail = localStorage.getItem('registeredEmail');
-            const registeredPassword = localStorage.getItem('registeredPassword');
+          // Retrieve stored credentials from register.html
+          let accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
 
-            // Check if credentials match
-            if (enteredEmail === registeredEmail && enteredPassword === registeredPassword) {
-                alert('Đăng nhập thành công!');
-                window.location.href = './homepage.html'; // Redirect to the homepage
-            } else {
-                alert('Tên đăng nhập hoặc mật khẩu không đúng!');
-            }
-        }
+          // Check if credentials match
+          // Kiểm tra xem email đã tồn tại chưa
+          const existingAccount = accounts.find(account => account.email === enteredEmail);
+          if (existingAccount &&  existingAccount.password === enteredPassword) {
+              alert('Đăng nhập thành công!');
+              localStorage.setItem('loggedInUser', JSON.stringify(existingAccount));
+
+              window.location.href = 'index.html'; // Redirect to the trang chu
+              return;
+            
+          }
+          else {
+              alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+              document.getElementById('username').value = "";
+              document.getElementById('password').value = "";
+          }
+      }
     </script>
 </body>
 </html>

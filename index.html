@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/5e965db3d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      href="./image/icons/logo.png"
+      type="image/x-icon"
+    />
+    <title>Home page</title>
+  </head>
+  <body>
+    <header>
+      <div class="headerBanner">
+        <li>Giao hàng nhanh</li>
+        <li>
+          <img src="./image/icons/medal.png" alt="medal_icon" />Sản phẩm chính
+          hãng
+        </li>
+        <li>Bảo hành lâu dài</li>
+      </div>
+    </header>
+
+
+    <!-- ----------------------NAVIGATION BAR------------------------------ -->
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><img src="./image/icons/brand_logo.png" class="brand-logo" /></li>
+          <li>
+            <button onclick="toggleMenu()">
+              <i class="fa-solid fa-list"></i><a href="#">Danh mục</a>
+            </button>
+            <ul id="brandMenu" style="display: none;">
+              <li><a href="#" onclick="filterPhones('xiaomiPhones')">Xiaomi</a></li>
+              <li><a href="#" onclick="filterPhones('samsungPhones')">Samsung</a></li>
+              <li><a href="#" onclick="filterPhones('oppoPhones')">Oppo</a></li>
+              <li><a href="#" onclick="filterPhones('all')">Tất cả</a></li>
+            </ul>
+          </li>
+
+          <li class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Nhập từ khóa tìm kiếm"
+            />
+          </li>
+          <li>
+              <button id="orderCall"><i class="fa-solid fa-phone"></i>Gọi mua hàng</button>
+          </li>
+          <li>
+            <button>
+              <i class="fa-solid fa-cart-shopping"></i><a href="./cart.html">Giỏ hàng</a>
+            </button>
+          </li>
+          <li>
+            <button id="loginButton">
+              <i class="fa-solid fa-right-to-bracket"></i
+              ><a href="login.html">Đăng nhập</a>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-------------------POP UP ADVERTISMENT--------------------------->
+    <div class="popup-advertisement">
+        <img src="./image/icons/banner2.webp" alt="pop-up-banner">
+        <button onclick="closePopup()" class="exit-btn"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+
+    <!-- -----------------HOT SALE--------------- -->
+    <section class="hot-sale-container">
+      <h1>
+        <i class="fa-solid fa-fire-flame-curved"></i>HOT SALE<i
+          class="fa-solid fa-fire-flame-curved"
+        ></i>
+      </h1>
+      <div class="count-down-timer">
+        <div class="hour">00</div>:<div class="min">00</div>:<div class="sec">00</div>
+      </div>
+      <div class="hot-sale-content">
+        <div class="hot-sale-btn">
+          <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="hot-sale-items"></div>
+        </div>
+      </div>
+    </section>
+    <!---------------- dien thoai noi bat ---------------->
+
+    <!-- HTML Structure for "Điện Thoại Nổi Bật" Section -->
+    <section class="featured-container">
+      <h1>ĐIỆN THOẠI NỔI BẬT</h1>
+      <div class="featured-grid">
+      </div>
+    </section>
+
+    <!------------ Tin tức ------------>
+    <div class="news">
+      <div class="item col-s-3 col-3">
+        <div class="content">
+          <div class="forming">
+              <img src="./image/tintuc/tintuc1.jpg" alt="">
+          </div>
+          <div class="forcontent">
+              <p>Oppo tổ chức chương trình "X- Project:Cùng OPPO khám phá Việt Nam vô tận” với cơ hội được trải nghiệm các flagship mới "</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item col-s-3 col-3">
+        <div class="content">
+          <div class="forming">
+              <img src="./image/tintuc/tintuc2.jpg" alt="">
+          </div>
+          <div class="forcontent">
+              <p>Bất ngờ: Samsung có thể loại bỏ thương hiệu "Galaxy" trên các dòng điện thoại cao cấp?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item col-s-3 col-3">
+        <div class="content">
+          <div class="forming">
+              <img src="./image/tintuc/tintuc3.jpg" alt="">
+          </div>
+          <div class="forcontent">
+              <p>Siêu điện thoại gập Galaxy Z Fold Special Edition "cháy hàng" chỉ sau 10 phút mở bán</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item col-s-3 col-3">
+        <div class="content">
+          <div class="forming">
+              <img src="./image/tintuc/tintuc4.jpg" alt="">
+          </div>
+          <div class="forcontent">
+              <p>Đây là thông tin chi tiết hệ thống camera của Xiaomi 15 Ultra</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <footer>
+      <div class="footer-section">
+        <h3>Tổng đài hỗ trợ</h3>
+        <ul>
+          <li>Gọi mua hàng</li>
+          <li>Gọi phản hồi</li>
+          <li>Gọi hỗ trợ</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Phương thức thanh toán</h3>
+        <ul>
+          <li>Thanh toán tín dụng (credit)</li>
+          <li>Thanh toán online</li>
+          <li>Thanh toán bằng tiền mặt (cash)</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Doanh nghiệp hợp tác</h3>
+        <ul class="collumns">
+          <li>Xiaomi</li>
+          <li>Samsung</li>
+          <li>Apple</li>
+          <li>Vsmart</li>
+          <li>Nokia</li>
+          <li>Huawei</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin chính sách</h3>
+        <ul>
+          <li>Chính sách mua hàng</li>
+          <li>Chính sách bảo hành</li>
+          <li>Chính sách đổi trả</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+
+  <script src="./script.js"></script>
+
+</html>

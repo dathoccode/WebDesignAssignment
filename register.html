@@ -4,18 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký Tài Khoản</title>
-    <link rel="stylesheet" href="register.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        .register-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .register-container img{
+            max-width: 160px;
+        }
+        .register-container h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .register-container p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .register-container label {
+            display: block;
+            font-size: 17px;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        .register-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+        .terms {
+            font-size: 15px;
+            color: #666;
+            text-align: right;
+            margin: 15px 0;
+        }
+        .btn-register {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .btn-register:hover {
+            background-color: #0056b3;
+        }
+        .login-link {
+            border-top: 1px solid gray;
+            font-size: 15px;
+            color: #666;
+            padding-top: 20px;
+            margin-top: 15px;
+        }
+        /* Notification style */
+        #notification{
+            visibility: hidden;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
+        .footer {
+            background-color: #f9f9f9;
+            padding: 14px;
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            margin-top: 15px;
+            border-top: 1px solid #ddd;
+            display: block;
+            position: absolute;
+            width: 100%;
+        }
+        
+        .footer-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            margin-bottom: 5px;
+        }
+        
+        .footer p {
+            font-size: 15px;
+            color: #666;
+            padding-top: 5px;
+        }
+        
+    </style>
 </head>
 <body>
 
     <main class="register-container">
         <div class="logo">
-            <img src="./image/brand_logo.png" alt="automobilelogo">
+            <a href="index.html"><img src="./image/icons/brand_logo.png" alt="automobilelogo"></a>
         </div>
         <h1>Đăng ký tài khoản</h1>
         <p>Một tài khoản sử dụng cho tất cả các dịch vụ của Automobile</p>
         <form id="registerForm" onsubmit="registerUser(event)">
-            <label for="fullname">Tên đầy đủ</label>
+            <label for="fullname">Họ và Tên</label>
             <input type="text" id="fullname" name="fullname" placeholder="Nhập tên của bạn" required>
 
             <label for="email">Email</label>
@@ -39,6 +178,10 @@
         <p class="login-link">Bạn đã có tài khoản? <a href="./login.html">Đăng nhập</a></p>
     </main>
 
+
+    <!-- Notification div -->
+    <div id="notification">Đăng ký thành công! Đang chuyển hướng đến Đăng nhập</div>
+
     <footer class="footer">
         <div class="footer-links">
             <a href="#">Điều khoản sử dụng</a> |
@@ -49,25 +192,54 @@
     </footer>
 
     <script>
-        function registerUser(event) {
-            event.preventDefault();
+    function registerUser(event) {
+    event.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+    const fullname = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value; 
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    const phonePattern = /^0\d{9}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Số điện thoại không hợp lệ! Số điện thoại phải bắt đầu bằng số 0 và có đúng 10 chữ số.');
+        document.getElementById('phone').value = "";
+        return;
+    }
+    if (password.length < 6 || password.length > 20) {
+        alert('Mật khẩu phải có từ 6 đến 20 ký tự!');
+        document.getElementById('password').value = "";
+        document.getElementById('confirmPassword').value = "";  
+        return;
+    }
+    if (password !== confirmPassword) {
+        alert('Mật khẩu xác nhận không khớp!');
+        document.getElementById('password').value = "";
+        document.getElementById('confirmPassword').value = "";  
+        return;
+    }
+    let accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
 
-            if (password !== confirmPassword) {
-                alert('Mật khẩu xác nhận không khớp!');
-                return;
-            }
+    const existingAccount = accounts.find(account => account.email === email);
+    if (existingAccount) {
+        alert('Email đã được sử dụng!');
+        return;
+    }
 
-            // Store user data in localStorage
-            localStorage.setItem('registeredEmail', email);
-            localStorage.setItem('registeredPassword', password);
+    const newAccount = { fullname, email, phone, password };
+    accounts.push(newAccount);
 
-            alert('Đăng ký thành công! Đang chuyển hướng đến trang chủ...');
-            window.location.href = './login.html'; // Redirect to login
-        }
+    localStorage.setItem('userAccounts', JSON.stringify(accounts));
+
+    const notification = document.getElementById('notification');
+    notification.style.visibility = 'visible';
+
+    setTimeout(() => {
+        notification.style.visibility = 'hidden';
+        window.location.href = './login.html'; 
+    }, 1000);
+}
     </script>
 </body>
 </html>
