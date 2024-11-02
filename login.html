@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
     <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
         .login-container {
             width: 100%;
             max-width: 500px;
@@ -48,7 +52,7 @@
           
           .login-container input[type="text"],
           .login-container input[type="password"] {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -104,22 +108,21 @@
           
           .footer {
             background-color: #f9f9f9;
-            padding-top: 10px;
             text-align: center;
             font-size: 15px;
             color: #666;
-            margin-top: 20px;
+            /* margin-top: 15px; */
             border-top: 1px solid #ddd;
             display: block;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-          }
+            position: absolute; 
+            bottom: 0; 
+            width: 99%; 
+        }
           
           .footer-links a {
             color: #007bff;
             text-decoration: none;
-            margin: 0 5px;
+            /* margin: 0 5px; */
           }
           
           .footer-links a:hover {
@@ -127,13 +130,16 @@
           }
           
           .footer-links {
-            margin: 10px 0;
+            margin-bottom: 3px;
+            margin-top: 5px;
+            padding-top: 10px;
           }
           
           .footer p {
+            margin-top: 9px;
             font-size: 15px;
             color: #666;
-            padding-bottom: 10px;
+            margin-bottom: 15px;
           }
     </style>
 </head>
@@ -146,7 +152,7 @@
         <h1>Đăng Nhập</h1>
         <p>Đăng nhập một tài khoản sử dụng cho tất cả các dịch vụ</p>
         <form id="loginForm" onsubmit="return loginUser(event)">
-            <label for="username">Tên đăng nhập hoặc email</label>
+            <label for="username">Email</label>
             <input type="text" id="username" name="username" placeholder="Nhập Email" required>
 
             <label for="password">Mật khẩu</label>

@@ -1,5 +1,15 @@
 //----------------------------------NAVIGATION BAR----------------------------
 
+//------------ORDER CALL
+function orderCall(){
+    var order = document.getElementById("orderCall");
+    order.addEventListener("click", function(){
+        alert("Goị điện tới số: 0847294503 để được tư vấn và đặt hàng")
+    })
+}
+
+
+
 //-------------SEARCH
 document.getElementById("searchInput").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
@@ -58,7 +68,7 @@ if (loggedInUser) {
         const welcomeMessage = document.createElement('span');
         welcomeMessage.innerHTML = `Xin chào ${truncateText(loggedInUser.fullname, 5)}`;
         welcomeMessage.style.marginRight = '10px';
-        welcomeMessage.style.color = 'White'
+        welcomeMessage.style.color = 'Black'
         welcomeMessage.style.overflow = "ellipsis"
         welcomeMessage.style.backgroundColor = "transparent"
         loginButton.parentNode.appendChild(welcomeMessage);
@@ -112,7 +122,6 @@ let hotSaleData = [
     {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
     {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
     {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
-    {id: "iphone16promax", name: "Iphone 16 Promax", price: 40000000, percent: 19},
 ]
 let hotSaleItems = document.getElementsByClassName('hot-sale-items')[0]
 let hotSaleProductStr = ''
