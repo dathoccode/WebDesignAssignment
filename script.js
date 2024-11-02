@@ -93,7 +93,7 @@ function closePopup(){
 
 // ---------------Danh mục---------------
 function toggleMenu() {
-    const menu = document.getElementById('brandMenu');
+    const menu = document.getElementById('brandMenu'); 
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
     }
   
@@ -119,7 +119,7 @@ let hotSaleData = [
     {id: "samsunggalaxyzflip6", name: "Samsung Galaxy Zflip 6", price: 26490000, percent: 12},
     {id: "samsunggalaxyzfold", name: "SamSung Galaxy Zfold", price: 40490000, percent: 19},
     {id: "xiaomimi11", name: "Xiaomi Mi 11", price: 10490000, percent:  15},
-    {id: "xiaomiredminote13", name: "Xiaomi Redmi Note 113", price: 7990000, percent: 20},
+    {id: "xiaomiredminote13", name: "Xiaomi Redmi Note 13", price: 7990000, percent: 20},
     {id: "oppofindx5pro", name: "Oppo Find X5 Pro", price: 6000000, percent: 24},
     {id: "samsunggalaxyzfold", name: "SamSung Galaxy Zfold", price: 40490000, percent: 17},
 ]
@@ -259,11 +259,11 @@ let productData = [
     {id: "xiaomimi11", name: "Xiaomi Mi 11", price: 10490000, brand: "xiaomiPhones"},
     {id: "xiaomipocox6pro5g", name: "Xiaomi Poco X6 Pro 5G", price: 8490000, brand: "xiaomiPhones"},
     {id: "xiaomiredmi14c", name: "Xiaomi Redmi 14C", price: 30990000, brand: "xiaomiPhones"},
-    {id: "xiaomiredminote13", name: "Xiaomi Redmi Note 113", price: 7990000, brand: "xiaomiPhones"},
+    {id: "xiaomiredminote13", name: "Xiaomi Redmi Note 13", price: 7990000, brand: "xiaomiPhones"},
 ]
 productData.forEach((item) => {
     featuredProductStr += `
-        <a href="products/${item.id}.html" class="oppoPhones">
+        <a href="products/${item.id}.html" class="${item.brand}">
           <div class="product-card">
             <img src="./image/${item.id}/${item.id}main.png" alt="Tên sản phẩm" />
             <p class="product-name">${item.name}</p>
