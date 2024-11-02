@@ -467,3 +467,13 @@ footer {
 .product-rating span{
     color: #333;
 }
+
+.copyright{
+    clear: both;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    background-color:#ffd1d6;
+    color: #0e4274;
+    padding-bottom: 10px;
+}
