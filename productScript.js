@@ -11,7 +11,7 @@
             document.querySelector('[alt = "Tên sản phẩm"]').src = item.querySelector("img").src
           }
           let cart;
-          function addToCart(item){
+          function addToCart(){
             if(!document.querySelector('input[name="version"]:checked') || !document.querySelector('input[name="color"]:checked')){
               alert("Hãy chọn màu và phiên bản!")
             }

@@ -113,15 +113,15 @@ function toggleMenu() {
 //---------------------------------------Hot sale product generator---------------------------------------
 //enter product data
 let hotSaleData = [
-    {id: "oppoa3", name: "Oppo A3", price: 2990000, percent: 19},
+    {id: "samsunggalaxys23ultra", name: "Samsung Galaxy S23 Ultra", price: 10690000, percent: 18},
     {id: "oppoa79", name: "Oppo A79", price: 4999000, percent: 20},
-    {id: "opporeno125g", name: "Oppo A3", price: 3200000, percent: 19},
-    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, percent: 19},
-    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, percent: 19},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, percent: 19},
+    {id: "opporeno125g", name: "Oppo Reno 12 5G", price: 7690000, percent: 19},
+    {id: "samsunggalaxyzflip6", name: "Samsung Galaxy Zflip 6", price: 26490000, percent: 12},
+    {id: "samsunggalaxyzfold", name: "SamSung Galaxy Zfold", price: 40490000, percent: 19},
+    {id: "xiaomimi11", name: "Xiaomi Mi 11", price: 10490000, percent:  15},
+    {id: "xiaomiredminote13", name: "Xiaomi Redmi Note 113", price: 7990000, percent: 20},
+    {id: "oppofindx5pro", name: "Oppo Find X5 Pro", price: 6000000, percent: 24},
+    {id: "samsunggalaxyzfold", name: "SamSung Galaxy Zfold", price: 40490000, percent: 17},
 ]
 let hotSaleItems = document.getElementsByClassName('hot-sale-items')[0]
 let hotSaleProductStr = ''
@@ -204,7 +204,7 @@ function hotSaleAuto() {
     }
 }
 
-setInterval(hotSaleAuto, 5000);
+setInterval(hotSaleAuto, 3000);
 
 //---------------------------count-down-timer---------------------------
 function countDownTimer(){
@@ -246,43 +246,20 @@ let featuredItems = document.getElementsByClassName('featured-grid')[0]
 let featuredProductStr = ''
 let productData = [
     {id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
-    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
-    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
-    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
-    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
-    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
-    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},{id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
-    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
-    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
-    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},{id: "oppoa3", name: "Oppo A3", price: 2990000, brand: "oppoPhones"},
-    {id: "oppoa79", name: "Oppo A79", price: 4999000, brand: "oppoPhones"},
-    {id: "opporeno125g", name: "Oppo A3", price: 3200000, brand: "oppoPhones"},
-    {id: "samsunggalaxya35", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredminote13", name: "Oppo A3", price: 4230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
-    {id: "xiaomiredmi14c", name: "Oppo A3", price: 21230000, brand: "oppoPhones"},
+    {id: "oppoa18", name: "Oppo A18", price: 2990000, brand: "oppoPhones"},
+    {id: "oppoa79", name: "Oppo A79", price: 4990000, brand: "oppoPhones"},
+    {id: "oppofindx5pro", name: "Oppo Find X5 Pro", price: 6000000, brand: "oppoPhones"},
+    {id: "opporeno125g", name: "Oppo Reno 12 5G", price: 7690000, brand: "oppoPhones"},
+    {id: "samsunggalaxya35", name: "Samsung Galaxy A35", price: 10000000, brand: "samsungPhones"},
+    {id: "samsunggalaxys23ultra", name: "Samsung Galaxy S23 Ultra", price: 10690000, brand: "samsungPhones"},
+    {id: "samsunggalaxys24ultra", name: "Samsung Galaxy S24 Ultra", price: 19690000, brand: "samsungPhones"},
+    {id: "samsunggalaxyzflip6", name: "Samsung Galaxy Zflip 6", price: 26490000, brand: "samsungPhones"},
+    {id: "samsunggalaxyzfold", name: "SamSung Galaxy Zfold", price: 40490000, brand: "samsungPhones"},
+    {id: "xiaomi14ultra", name: "Xiaomi 14 Ultra", price: 30490000, brand: "xiaomiPhones"},
+    {id: "xiaomimi11", name: "Xiaomi Mi 11", price: 10490000, brand: "xiaomiPhones"},
+    {id: "xiaomipocox6pro5g", name: "Xiaomi Poco X6 Pro 5G", price: 8490000, brand: "xiaomiPhones"},
+    {id: "xiaomiredmi14c", name: "Xiaomi Redmi 14C", price: 30990000, brand: "xiaomiPhones"},
+    {id: "xiaomiredminote13", name: "Xiaomi Redmi Note 113", price: 7990000, brand: "xiaomiPhones"},
 ]
 productData.forEach((item) => {
     featuredProductStr += `
